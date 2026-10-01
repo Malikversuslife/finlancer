@@ -1,0 +1,10 @@
+{
+  "description": "A responsive marketing website showcasing a mobile financial OS that helps freelancers manage income, expenses, invoices, taxes, and financial goals seamlessly.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

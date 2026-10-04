@@ -270,8 +270,9 @@ export function PhotoBand({ id, alt, caption }: { id: string; alt: string; capti
   return (
     <section className="mx-auto max-w-[1280px] px-5 md:px-10">
       <div className="relative flex min-h-[380px] items-end overflow-hidden rounded-[24px] bg-ink p-7 text-paper md:p-10">
-        <div className="absolute right-[8%] top-[12%] h-44 w-44 rounded-full border-[30px] border-signal" />
-        <div className="absolute bottom-[-60px] right-[20%] h-48 w-48 rotate-12 bg-[#ffce31]" />
+        <Photo id={id} alt={alt} className="absolute inset-0 h-full w-full" w={1600} />
+        <div className="absolute inset-0 bg-[#06132b]/68" />
+        <div className="absolute right-[8%] top-[12%] h-44 w-44 rounded-full border-[24px] border-signal/80" />
         <div className="relative z-10 max-w-[620px]"><p className="label text-signal">Made for independent work</p><p className="mt-5 text-[clamp(2.2rem,5vw,4.8rem)] font-semibold leading-[.9] tracking-[-.065em]">The work is yours. Your financial system should be too.</p><p className="mt-6 max-w-[430px] text-[15px] leading-relaxed text-paper/65">{caption}</p></div>
       </div>
     </section>

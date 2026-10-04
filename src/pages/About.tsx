@@ -6,7 +6,7 @@ export default function About() {
     <>
       <section className="mx-auto max-w-[1280px] px-5 pb-20 pt-32 md:px-10 md:pt-40">
         <Eyebrow>About Finlancer</Eyebrow>
-        <h1 className="mt-6 max-w-[1000px] text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Independent work creates a different relationship with money.</h1>
+        <h1 className="mt-6 max-w-[1000px] text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.9] tracking-[-0.06em]">Independent work creates a different relationship with money.</h1>
       </section>
       <section className="mx-auto max-w-[1280px] px-5 md:px-10">
         <div className="relative min-h-[360px] overflow-hidden rounded-[24px] bg-ink p-7 text-paper md:p-12">

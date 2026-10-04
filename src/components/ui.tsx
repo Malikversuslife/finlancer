@@ -127,11 +127,11 @@ export const money = (n: number, d = 0) => '$' + n.toLocaleString('en-US', { min
 
 type BtnProps = { to: string; children: ReactNode; variant?: 'primary' | 'secondary' | 'ghost' | 'dark'; className?: string; arrow?: boolean }
 export function Button({ to, children, variant = 'primary', className = '', arrow = true }: BtnProps) {
-  const base = 'group inline-flex items-center gap-2 text-[14px] font-medium transition-[transform,filter,background-color,border-color,color] duration-200 hover:-translate-y-px'
+  const base = 'group inline-flex h-11 items-center gap-2 rounded-full px-6 text-[14px] font-medium leading-none transition-[transform,filter,background-color,border-color,color] duration-200 hover:-translate-y-px'
   const styles = {
-    primary: 'bg-signal text-ink px-6 h-11 rounded-full shadow-[0_10px_24px_-10px_rgba(31,143,63,.45)] hover:bg-[#58df72]',
-    secondary: 'bg-white/60 backdrop-blur-xl border border-white shadow-[0_6px_20px_-12px_rgba(29,29,31,.35)] text-ink hover:border-ink/40 px-5 h-11 rounded-full',
-    dark: 'bg-ink text-white px-5 h-11 rounded-full hover:bg-[#353537]',
+    primary: 'bg-signal text-ink shadow-[0_10px_24px_-10px_rgba(31,143,63,.45)] hover:bg-[#58df72]',
+    secondary: 'border border-line bg-paper text-ink shadow-[0_6px_20px_-12px_rgba(29,29,31,.28)] hover:border-ink/40',
+    dark: 'bg-ink text-white hover:bg-[#353537]',
     ghost: 'text-ink hover:text-signal-deep',
   }[variant]
   return (

@@ -86,7 +86,7 @@ export function Contact() {
           <label className="block text-[13px] text-mute">Email<input required type="email" className={field} autoComplete="email" /></label>
           <label className="block text-[13px] text-mute">What kind of work do you do?<input className={field} placeholder="Designer, photographer, developer, consultant…" /></label>
           <label className="block text-[13px] text-mute">Message (optional)<textarea rows={4} className={field + ' h-auto py-3'} /></label>
-          <button className="group inline-flex h-11 items-center gap-2 rounded-full bg-signal px-5 text-[14px] font-medium transition-[transform,background-color] hover:-translate-y-px hover:bg-[#28b45f]">Request early access →</button>
+          <button className="group inline-flex h-11 items-center gap-2 rounded-full bg-signal px-6 text-[14px] font-medium leading-none text-ink shadow-[0_10px_24px_-10px_rgba(31,143,63,.45)] transition-[transform,background-color] hover:-translate-y-px hover:bg-[#58df72]">Request early access →</button>
         </form>
       )}
     </Shell>

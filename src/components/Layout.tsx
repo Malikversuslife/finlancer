@@ -63,7 +63,7 @@ function Header() {
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
           <Link to="/contact" className={`px-3 text-[14px] ${darkSurface ? 'text-paper/70 hover:text-paper' : 'text-ink-2 hover:text-ink'}`}>Sign in</Link>
-          <Button to="/contact" className="!h-9 !px-4">Get started</Button>
+          <Button to="/contact" className="!h-10 !px-4">Get started</Button>
         </div>
         <button className="flex h-11 w-11 items-center justify-center lg:hidden" aria-label="Open menu" onClick={() => setDrawer(true)}><Menu size={20} strokeWidth={1.9} /></button>
       </div>

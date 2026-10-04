@@ -8,7 +8,7 @@ export default function Pricing() {
     <div className="product-shell">
       <section className="mx-auto grid max-w-[1280px] gap-8 px-5 pb-16 pt-32 md:px-10 md:pt-40 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-8"><Eyebrow>Pricing</Eyebrow>
-        <h1 className="mt-6 max-w-[900px] text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Choose the experience that fits.</h1>
+        <h1 className="mt-6 max-w-[900px] text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.9] tracking-[-0.06em]">Choose the experience that fits.</h1>
         <p className="mt-8 max-w-[520px] text-[17px] leading-relaxed text-paper/65">We're finalising pricing. We won't split the product into artificial tiers: the plans below show the structure we're working towards, and prices will appear here once they're decided.</p></div>
         <div className="relative mx-auto min-h-[270px] w-full max-w-[340px] overflow-hidden rounded-[24px] bg-ink lg:col-span-4"><span className="absolute -right-9 -top-8 h-40 w-40 rounded-full border-[26px] border-signal" /><span className="absolute bottom-[-30px] left-[16%] h-32 w-32 rotate-12 bg-[#ffce31]" /><p className="absolute bottom-6 left-6 max-w-[200px] text-[26px] font-semibold leading-[.9] tracking-[-.05em] text-paper">One complete product. No artificial tiers.</p></div>
       </section>
@@ -24,7 +24,7 @@ export default function Pricing() {
                 <span className="rounded-full border border-dashed border-mute/50 px-2.5 py-0.5 text-[11px] text-mute">Price to be confirmed</span>
               </div>
               <ul className="mt-10 space-y-3">{INCLUDED.map(f => <li key={f} className="flex gap-3 text-[15px]"><Check size={16} strokeWidth={2} className="mt-0.5 text-signal-deep" />{f}</li>)}</ul>
-              <Button to="/contact" variant={i ? 'primary' : 'secondary'} className="mt-10">Join the waitlist</Button>
+              <Button to="/contact" variant="primary" className="mt-10">Join the waitlist</Button>
             </Reveal>
           ))}
         </div>

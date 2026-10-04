@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 'react'
 import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
+import { BrandMotif } from './BrandMark'
 
 export const reducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -190,13 +191,13 @@ export const PHOTOS = {
 /** Shared page hero for product sub-pages */
 export function PageHero({ eyebrow, title, body, children }: { eyebrow: string; title: ReactNode; body: string; children?: ReactNode }) {
   return (
-    <section className="relative isolate overflow-hidden">
-      <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden bg-paper"><div className="absolute -right-14 -top-20 h-72 w-72 rounded-full bg-mint" /><div className="absolute bottom-[-160px] left-[18%] h-80 w-80 rounded-full border-[48px] border-[#dcecff]" /><div className="absolute left-[54%] top-[18%] h-14 w-14 rotate-12 bg-[#ffce31]" /></div>
+    <section className="product-shell relative isolate overflow-hidden">
+      <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden"><BrandMotif tone="blue" className="absolute -left-6 bottom-[-22px] h-40 w-40 opacity-80" /><div className="absolute -right-16 -top-20 h-80 w-80 rounded-full border-[48px] border-[#1a3872]" /></div>
       <div className="mx-auto grid max-w-[1280px] gap-12 px-5 pb-16 pt-32 md:px-10 md:pt-40 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
           <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>
-          <Reveal delay={80}><h1 className="mt-6 text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">{title}</h1></Reveal>
-          <Reveal delay={160}><p className="mt-8 max-w-[520px] text-[17px] leading-relaxed text-ink-2">{body}</p></Reveal>
+          <Reveal delay={80}><h1 className="mt-6 text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.9] tracking-[-0.06em]">{title}</h1></Reveal>
+          <Reveal delay={160}><p className="mt-8 max-w-[520px] text-[17px] leading-relaxed text-paper/68">{body}</p></Reveal>
           <Reveal delay={220} className="mt-10 flex flex-wrap gap-3">
             <Button to="/contact">Get started</Button>
             <Button to="/pricing" variant="secondary" arrow={false}>See pricing</Button>

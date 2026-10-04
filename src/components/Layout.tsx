@@ -27,6 +27,7 @@ function Header() {
   const [drawer, setDrawer] = useState(false)
   const [mobileProduct, setMobileProduct] = useState(false)
   const loc = useLocation()
+  const darkSurface = !['/', '/resources', '/about', '/pricing'].includes(loc.pathname)
   const t = useRef<number>(0)
 
   useEffect(() => {
@@ -44,12 +45,12 @@ function Header() {
 
   const open = () => { clearTimeout(t.current); setMega(true) }
   const close = () => { t.current = window.setTimeout(() => setMega(false), 140) }
-  const link = 'relative px-3 py-2 text-[14px] text-ink-2 transition-colors hover:text-ink after:absolute after:inset-x-3 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform hover:after:scale-x-100'
+  const link = `relative px-3 py-2 text-[14px] transition-colors after:absolute after:inset-x-3 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:transition-transform hover:after:scale-x-100 ${darkSurface ? 'text-paper/70 hover:text-paper after:bg-paper' : 'text-ink-2 hover:text-ink after:bg-ink'}`
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${scrolled || mega ? 'border-b border-line bg-paper/90 backdrop-blur-md' : 'border-b border-transparent'}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${darkSurface ? 'border-b border-white/10 bg-ink text-paper' : scrolled || mega ? 'border-b border-line bg-paper/90 backdrop-blur-md' : 'border-b border-transparent'}`}>
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 md:px-10">
-        <Link to="/" aria-label="Finlancer home"><Logo className="text-[14px]" /></Link>
+        <Link to="/" aria-label="Finlancer home"><Logo className={`text-[14px] ${darkSurface ? 'text-paper' : ''}`} /></Link>
         <nav className="hidden items-center lg:flex" aria-label="Main">
           <div onMouseEnter={open} onMouseLeave={close}>
             <button className={`${link} flex items-center gap-1`} aria-expanded={mega} onClick={() => setMega(m => !m)}>
@@ -61,7 +62,7 @@ function Header() {
           <NavLink to="/pricing" className={link}>Pricing</NavLink>
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
-          <Link to="/contact" className="px-3 text-[14px] text-ink-2 hover:text-ink">Sign in</Link>
+          <Link to="/contact" className={`px-3 text-[14px] ${darkSurface ? 'text-paper/70 hover:text-paper' : 'text-ink-2 hover:text-ink'}`}>Sign in</Link>
           <Button to="/contact" className="!h-9 !px-4">Get started</Button>
         </div>
         <button className="flex h-11 w-11 items-center justify-center lg:hidden" aria-label="Open menu" onClick={() => setDrawer(true)}><Menu size={20} strokeWidth={1.9} /></button>
@@ -135,24 +136,24 @@ function Footer() {
     ['Legal', [['/privacy', 'Privacy'], ['/terms', 'Terms']]],
   ]
   return (
-    <footer className="border-t border-line bg-paper-2">
+    <footer className="border-t border-white/10 bg-ink text-paper">
       <div className="mx-auto max-w-[1280px] px-5 pt-20 md:px-10">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Logo className="text-[15px]" />
-            <p className="mt-5 max-w-[300px] text-[14px] leading-relaxed text-mute">The financial operating system for independent work. Built for your phone, because that is where your working day already lives.</p>
+            <p className="mt-5 max-w-[300px] text-[14px] leading-relaxed text-paper/55">The financial operating system for independent work. Built for your phone, because that is where your working day already lives.</p>
           </div>
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:col-span-8">
             {groups.map(([h, ls]) => (
               <div key={h}>
-                <p className="label text-mute">{h}</p>
-                <ul className="mt-5 space-y-3">{ls.map(([to, l]) => <li key={l}><Link to={to} className="text-[14px] text-ink-2 transition-colors hover:text-signal-deep">{l}</Link></li>)}</ul>
+                <p className="label text-paper/45">{h}</p>
+                <ul className="mt-5 space-y-3">{ls.map(([to, l]) => <li key={l}><Link to={to} className="text-[14px] text-paper/65 transition-colors hover:text-signal">{l}</Link></li>)}</ul>
               </div>
             ))}
           </div>
         </div>
-        <p className="mt-24 select-none text-[clamp(4rem,17vw,15.5rem)] font-semibold leading-[0.78] tracking-[-0.06em] text-ink" aria-hidden>FINLANCER</p>
-        <div className="flex flex-col justify-between gap-2 border-t border-line py-6 text-[12px] text-mute sm:flex-row">
+        <p className="mt-24 select-none text-[clamp(4rem,17vw,15.5rem)] font-semibold leading-[0.78] tracking-[-0.06em] text-paper" aria-hidden>FINLANCER</p>
+        <div className="flex flex-col justify-between gap-2 border-t border-white/10 py-6 text-[12px] text-paper/45 sm:flex-row">
           <span>© 2026 Finlancer</span>
           <span>Finlancer does not provide tax, legal or financial advice.</span>
         </div>

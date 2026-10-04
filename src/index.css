@@ -59,6 +59,11 @@
   .kinetic-panel:hover { transform: translateY(-7px) rotate(-.45deg); box-shadow: 0 26px 45px -28px rgba(29,29,31,.42); }
   .product-tile { border-radius: 20px; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s cubic-bezier(.2,.7,.2,1); }
   .product-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 34px -28px rgba(29,29,31,.55); }
+  .brand-motif { display: grid; grid-template-columns: repeat(2, 1fr); width: 90px; aspect-ratio: 1; gap: 4px; transform: rotate(45deg); }
+  .brand-motif span { background: currentColor; border-radius: 999px 999px 999px 8px; }.brand-motif span:nth-child(2), .brand-motif span:nth-child(3) { transform: rotate(90deg); }
+  .brand-motif-blue { color: #63d6ff; }.brand-motif-green { color: #58df72; }.brand-motif-coral { color: #ff998d; }.brand-motif-yellow { color: #ffce31; }
+  .product-shell { background: #06132b; color: #f5f5f7; }
+  .product-shell .label { color: rgba(245,245,247,.55); }
   a, button { -webkit-tap-highlight-color: transparent; }
   a:active, button:active { transform: scale(.98); }
   @keyframes float { 50% { transform: translateY(-13px) rotate(6deg); } }

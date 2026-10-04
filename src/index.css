@@ -57,6 +57,8 @@
   .vector-bob { transform-box: fill-box; transform-origin: center; animation: bob 5.4s ease-in-out infinite; }
   .kinetic-panel { transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s cubic-bezier(.2,.7,.2,1); }
   .kinetic-panel:hover { transform: translateY(-7px) rotate(-.45deg); box-shadow: 0 26px 45px -28px rgba(29,29,31,.42); }
+  .product-tile { border-radius: 20px; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s cubic-bezier(.2,.7,.2,1); }
+  .product-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 34px -28px rgba(29,29,31,.55); }
   a, button { -webkit-tap-highlight-color: transparent; }
   a:active, button:active { transform: scale(.98); }
   @keyframes float { 50% { transform: translateY(-13px) rotate(6deg); } }
@@ -97,6 +99,7 @@
   .vector-art { filter: none; }
   .vector-stroke, .vector-float, .vector-bob { animation: none; }
   .kinetic-panel:hover { transform: none; box-shadow: none; }
+  .product-tile:hover { transform: none; box-shadow: none; }
   .color-scene { min-height: 250px; }
   .color-scene:hover { transform: none; }
   .color-scene:hover .color-card-front { transform: rotate(-6deg); }

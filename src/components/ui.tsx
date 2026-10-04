@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 'react'
 import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
-import { EditorialIllustration } from './Illustration'
 
 export const reducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -189,9 +188,7 @@ export const PHOTOS = {
 }
 
 /** Shared page hero for product sub-pages */
-export function PageHero({ eyebrow, title, body }: { eyebrow: string; title: ReactNode; body: string; children?: ReactNode }) {
-  const label = eyebrow.toLowerCase()
-  const scene = label.includes('invoice') ? 'invoice' : label.includes('tax') ? 'tax' : label.includes('goal') ? 'goals' : label.includes('intelligence') ? 'insight' : 'money'
+export function PageHero({ eyebrow, title, body, children }: { eyebrow: string; title: ReactNode; body: string; children?: ReactNode }) {
   return (
     <section className="relative isolate overflow-hidden">
       <GradientField className="-z-10" />
@@ -205,9 +202,8 @@ export function PageHero({ eyebrow, title, body }: { eyebrow: string; title: Rea
             <Button to="/pricing" variant="secondary" arrow={false}>See pricing</Button>
           </Reveal>
         </div>
-        <Reveal delay={180} className="relative mx-auto w-full max-w-[520px] lg:col-span-5">
-          <div className="absolute inset-[14%] rounded-full bg-white/55" />
-          <EditorialIllustration scene={scene} className="relative z-10 w-full" />
+        <Reveal delay={180} className="relative mx-auto flex w-full max-w-[520px] justify-center lg:col-span-5">
+          {children ?? <div className="flex min-h-[320px] w-full items-end rounded-[24px] bg-ink p-7 text-paper"><p className="max-w-[280px] text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[.9] tracking-[-.06em]">The money side of your work, in one place.</p></div>}
         </Reveal>
       </div>
     </section>

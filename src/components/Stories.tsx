@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Phone, InvoiceFlowScreen, TaxScreen, GoalsScreen, GoalCreateScreen } from './Phone'
 import { Button, CountUp, Eyebrow, Reveal, money, useScrollProgress, Photo, PHOTOS, Parallax } from './ui'
+import { EditorialIllustration } from './Illustration'
 
 /* Generic sticky story: narrative steps left, phone right */
 function StickyStory({ eyebrow, title, steps, render, tall = 'h-[260vh] md:h-[340vh]', bg = '' }: {
@@ -269,9 +270,9 @@ export function LifeToProduct() {
 export function PhotoBand({ id, alt, caption }: { id: string; alt: string; caption: string }) {
   return (
     <section className="mx-auto max-w-[1280px] px-5 md:px-10">
-      <div className="relative h-[60vh] min-h-[380px] overflow-hidden rounded-[28px]">
-        <Parallax speed={-0.06} className="absolute -inset-y-16 inset-x-0"><Photo id={id} alt={alt} className="h-full w-full" w={1800} /></Parallax>
-        <p className="absolute bottom-6 left-6 max-w-[360px] text-[15px] text-paper">{caption}</p>
+      <div className="kinetic-panel relative flex min-h-[380px] items-center justify-center overflow-hidden rounded-[28px] bg-[#dcecff] p-8">
+        <EditorialIllustration scene={id.includes('studio') ? 'goals' : id.includes('cafe') ? 'invoice' : 'money'} className="max-h-[500px] max-w-[680px]" />
+        <p className="absolute bottom-6 left-6 max-w-[360px] rounded-[12px] bg-ink px-4 py-3 text-[15px] text-paper">{caption}</p>
       </div>
     </section>
   )

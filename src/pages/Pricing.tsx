@@ -1,15 +1,17 @@
 import { Check } from 'lucide-react'
 import { Button, Eyebrow, Reveal } from '../components/ui'
+import { EditorialIllustration } from '../components/Illustration'
 
 const INCLUDED = ['Income and expense tracking', 'Invoices, clients and payment links', 'Tax reserves, deductions and documents', 'Goals with automatic contributions', 'Finlancer Intelligence throughout']
 
 export default function Pricing() {
   return (
     <>
-      <section className="mx-auto max-w-[1280px] px-5 pb-16 pt-32 md:px-10 md:pt-40">
-        <Eyebrow>Pricing</Eyebrow>
+      <section className="mx-auto grid max-w-[1280px] gap-8 px-5 pb-16 pt-32 md:px-10 md:pt-40 lg:grid-cols-12 lg:items-center">
+        <div className="lg:col-span-8"><Eyebrow>Pricing</Eyebrow>
         <h1 className="mt-6 max-w-[900px] text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Choose the experience that fits.</h1>
-        <p className="mt-8 max-w-[520px] text-[17px] leading-relaxed text-ink-2">We're finalising pricing. We won't split the product into artificial tiers: the plans below show the structure we're working towards, and prices will appear here once they're decided.</p>
+        <p className="mt-8 max-w-[520px] text-[17px] leading-relaxed text-ink-2">We're finalising pricing. We won't split the product into artificial tiers: the plans below show the structure we're working towards, and prices will appear here once they're decided.</p></div>
+        <EditorialIllustration scene="pricing" className="mx-auto max-w-[340px] lg:col-span-4" />
       </section>
       <section className="mx-auto max-w-[1280px] px-5 pb-28 md:px-10">
         <div className="grid gap-px overflow-hidden rounded-[28px] border border-line bg-line lg:grid-cols-2">

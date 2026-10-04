@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 'react'
 import { Link } from 'react-router'
 import { ArrowRight } from 'lucide-react'
+import { EditorialIllustration } from './Illustration'
 
 export const reducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -188,7 +189,9 @@ export const PHOTOS = {
 }
 
 /** Shared page hero for product sub-pages */
-export function PageHero({ eyebrow, title, body, children }: { eyebrow: string; title: ReactNode; body: string; children?: ReactNode }) {
+export function PageHero({ eyebrow, title, body }: { eyebrow: string; title: ReactNode; body: string; children?: ReactNode }) {
+  const label = eyebrow.toLowerCase()
+  const scene = label.includes('invoice') ? 'invoice' : label.includes('tax') ? 'tax' : label.includes('goal') ? 'goals' : label.includes('intelligence') ? 'insight' : 'money'
   return (
     <section className="relative isolate overflow-hidden">
       <GradientField className="-z-10" />
@@ -202,7 +205,10 @@ export function PageHero({ eyebrow, title, body, children }: { eyebrow: string; 
             <Button to="/pricing" variant="secondary" arrow={false}>See pricing</Button>
           </Reveal>
         </div>
-        <div className="lg:col-span-5">{children}</div>
+        <Reveal delay={180} className="relative mx-auto w-full max-w-[520px] lg:col-span-5">
+          <div className="absolute inset-[14%] rounded-full bg-white/55" />
+          <EditorialIllustration scene={scene} className="relative z-10 w-full" />
+        </Reveal>
       </div>
     </section>
   )

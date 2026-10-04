@@ -50,12 +50,24 @@
   @keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
   .marquee { animation: drift 40s linear infinite; }
   @keyframes drift { to { transform: translateX(-50%); } }
+  .vector-art { overflow: visible; filter: drop-shadow(0 18px 28px rgba(29,29,31,.12)); }
+  .vector-stroke { stroke-dasharray: 720; animation: drawPath 3.8s cubic-bezier(.2,.7,.2,1) infinite alternate; }
+  .vector-float { transform-box: fill-box; transform-origin: center; animation: float 4.8s ease-in-out infinite; }
+  .vector-two { animation-delay: -2.2s; }
+  .vector-bob { transform-box: fill-box; transform-origin: center; animation: bob 5.4s ease-in-out infinite; }
+  .kinetic-panel { transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s cubic-bezier(.2,.7,.2,1); }
+  .kinetic-panel:hover { transform: translateY(-7px) rotate(-.45deg); box-shadow: 0 26px 45px -28px rgba(29,29,31,.42); }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:active, button:active { transform: scale(.98); }
+  @keyframes float { 50% { transform: translateY(-13px) rotate(6deg); } }
+  @keyframes bob { 50% { transform: translateY(-9px); } }
+  @keyframes drawPath { from { stroke-dashoffset: 125; } to { stroke-dashoffset: 0; } }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .menu-in, .marquee { animation: none; }
+  .menu-in, .marquee, .vector-stroke, .vector-float, .vector-bob { animation: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
 
@@ -66,4 +78,7 @@
   .phone-shadow { transform: translateY(24px) !important; transition: none; }
   [class*="backdrop-blur"] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
   .will-change-transform { will-change: auto !important; }
+  .vector-art { filter: none; }
+  .vector-stroke, .vector-float, .vector-bob { animation: none; }
+  .kinetic-panel:hover { transform: none; box-shadow: none; }
 }

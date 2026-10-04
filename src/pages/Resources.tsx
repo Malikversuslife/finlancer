@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router'
-import { Eyebrow, Photo, PHOTOS, Reveal } from '../components/ui'
+import { Eyebrow, Reveal } from '../components/ui'
+import { EditorialIllustration } from '../components/Illustration'
 
 const FINANCE = [
   ['Pricing a project when your income is uneven', '8 min'],
@@ -26,7 +27,7 @@ export default function Resources() {
         <div className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
             <a href="#finance" className="group block">
-              <Photo id={PHOTOS.mug} alt="A ceramic mug on a wooden table in morning light" className="aspect-[4/3] rounded-[28px]" />
+              <div className="kinetic-panel aspect-[4/3] overflow-hidden rounded-[28px] bg-[#dcecff] p-6"><EditorialIllustration scene="resources" className="h-full" /></div>
               <p className="label mt-6 text-signal-deep">Freelancer Finance · Feature</p>
               <h2 className="mt-3 text-[clamp(1.8rem,3.4vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.035em] group-hover:underline group-hover:decoration-1 group-hover:underline-offset-8">The quiet month: planning for the gaps between projects</h2>
               <p className="mt-3 max-w-[540px] text-[15px] leading-relaxed text-ink-2">Every independent career has slow stretches. A practical look at preparing for them without living in fear of them.</p>

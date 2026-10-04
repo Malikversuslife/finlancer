@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Phone, IncomeScreen, ExpensesScreen } from '../components/Phone'
-import { PageHero, Reveal, SectionHead, Photo, PHOTOS, Parallax, money } from '../components/ui'
+import { PageHero, Reveal, SectionHead, money } from '../components/ui'
+import { EditorialIllustration } from '../components/Illustration'
 import { SpendCalc, FinalCTA } from '../components/Stories'
 
 const SOURCES = [['Acme Studio', 3800, 'bg-ink'], ['Northwind Press', 2200, 'bg-signal'], ['Licensing', 1900, 'bg-sky'], ['Workshops', 1520, 'bg-violet']] as const
@@ -44,8 +45,8 @@ export default function Money() {
       <Flow />
       <section className="bg-paper-2 py-28">
         <div className="mx-auto grid max-w-[1280px] gap-14 px-5 md:px-10 lg:grid-cols-12">
-          <div className="relative h-[420px] overflow-hidden rounded-[28px] lg:col-span-5 lg:h-auto">
-            <Parallax speed={-0.05} className="absolute -inset-y-12 inset-x-0"><Photo id={PHOTOS.laptop} alt="A freelancer working on a laptop at a wooden table" className="h-full w-full" /></Parallax>
+          <div className="kinetic-panel relative flex h-[420px] items-center justify-center overflow-hidden rounded-[28px] bg-[#fff3d7] p-6 lg:col-span-5 lg:h-auto">
+            <EditorialIllustration scene="money" className="max-h-[440px]" />
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <SectionHead eyebrow="Spending patterns" title="The patterns that only show up over months." />

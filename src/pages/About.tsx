@@ -1,4 +1,5 @@
-import { Eyebrow, Photo, PHOTOS, Reveal, Parallax } from '../components/ui'
+import { Eyebrow, Reveal } from '../components/ui'
+import { EditorialIllustration } from '../components/Illustration'
 import { FinalCTA } from '../components/Stories'
 
 export default function About() {
@@ -9,8 +10,8 @@ export default function About() {
         <h1 className="mt-6 max-w-[1000px] text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Independent work creates a different relationship with money.</h1>
       </section>
       <section className="mx-auto max-w-[1280px] px-5 md:px-10">
-        <div className="relative h-[56vh] min-h-[360px] overflow-hidden rounded-[28px]">
-          <Parallax speed={-0.06} className="absolute -inset-y-16 inset-x-0"><Photo id={PHOTOS.remote} alt="A freelancer with a coffee working on a laptop" className="h-full w-full" w={1800} /></Parallax>
+        <div className="kinetic-panel relative min-h-[360px] overflow-hidden rounded-[28px] bg-[#fff3d7] p-6 md:p-12">
+          <EditorialIllustration scene="about" className="mx-auto max-h-[460px] max-w-[650px]" />
         </div>
       </section>
       <section className="mx-auto grid max-w-[1280px] gap-12 px-5 py-28 md:px-10 lg:grid-cols-12">

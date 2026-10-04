@@ -11,6 +11,13 @@ export function useInView<T extends Element>(threshold = 0.2) {
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    // Older mobile WebViews can lack IntersectionObserver. Rendering the
+    // content immediately is safer than letting an animation enhancement
+    // crash the whole React tree.
+    if (typeof IntersectionObserver === 'undefined') {
+      set(true)
+      return
+    }
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { set(true); io.disconnect() } }, { threshold })
     io.observe(el)
     return () => io.disconnect()

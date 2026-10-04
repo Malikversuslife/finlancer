@@ -53,7 +53,7 @@ export function useScrollProgress<T extends HTMLElement>() {
 export function Parallax({ speed = 0.08, children, className = '' }: { speed?: number; children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (reducedMotion()) return
+    if (reducedMotion() || window.matchMedia('(max-width: 767px)').matches) return
     const s = window.innerWidth < 768 ? speed * 0.4 : speed
     let raf = 0
     const on = () => {

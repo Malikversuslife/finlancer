@@ -58,3 +58,10 @@
   .menu-in, .marquee { animation: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
+
+@media (max-width: 767px) {
+  .phone-shell { perspective: none; }
+  .phone-body { transform: none !important; transition: none; }
+  .phone-depth, .phone-shine { display: none; }
+  .phone-shadow { transform: translateY(24px) !important; transition: none; }
+}

@@ -64,4 +64,6 @@
   .phone-body { transform: none !important; transition: none; }
   .phone-depth, .phone-shine { display: none; }
   .phone-shadow { transform: translateY(24px) !important; transition: none; }
+  [class*="backdrop-blur"] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .will-change-transform { will-change: auto !important; }
 }

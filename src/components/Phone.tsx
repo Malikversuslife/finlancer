@@ -49,29 +49,32 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
     return () => { window.removeEventListener('scroll', paint); w.removeEventListener('pointermove', move); w.removeEventListener('pointerleave', leave); cancelAnimationFrame(raf) }
   }, [pose])
 
-  const T = 16 // device thickness in px
+  const compact = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  const T = compact ? 0 : 16 // device thickness in px
   const R = 'rounded-[48px]'
   return (
     <div ref={wrap} className={`phone-shell relative aspect-[9/19.2] w-[280px] [perspective:1100px] ${className}`}>
       {/* contact shadow, moves with the device */}
       <div ref={shadow} aria-hidden className="phone-shadow pointer-events-none absolute inset-x-[6%] bottom-0 h-14 rounded-[50%] bg-[radial-gradient(closest-side,rgba(29,29,31,.38),transparent)] transition-transform duration-[600ms]" />
-      <div ref={body} className="phone-body relative h-full w-full transition-transform duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] [transform-style:preserve-3d]" style={{ '--edge': '50%' } as CSSProperties}>
+      <div ref={body} className={`phone-body relative h-full w-full ${compact ? '' : 'transition-transform duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] [transform-style:preserve-3d]'}`} style={compact ? undefined : { '--edge': '50%' } as CSSProperties}>
         {/* back glass */}
-        <div className={`phone-depth absolute inset-0 ${R} bg-[linear-gradient(145deg,#eef0f3,#c9ced6_45%,#9aa1ab)] [backface-visibility:hidden]`} style={{ transform: `translateZ(-${T}px) rotateY(180deg)` }}>
+        {!compact && <div className={`phone-depth absolute inset-0 ${R} bg-[linear-gradient(145deg,#eef0f3,#c9ced6_45%,#9aa1ab)] [backface-visibility:hidden]`} style={{ transform: `translateZ(-${T}px) rotateY(180deg)` }}>
           <div className="absolute right-5 top-5 h-[92px] w-[92px] rounded-[26px] bg-[linear-gradient(145deg,#f6f7f9,#bfc5cd)] p-2.5 shadow-[inset_0_1px_2px_rgba(255,255,255,.9),0_6px_14px_rgba(0,0,0,.25)]">
             {[[6, 6], [46, 6], [6, 46]].map(([x, y], i) => <span key={i} className="absolute h-[34px] w-[34px] rounded-full bg-[radial-gradient(circle_at_35%_30%,#4a5160,#0b0c10_60%)] ring-[3px] ring-[#aab1bb]" style={{ left: x + 3, top: y + 3 }} />)}
             <span className="absolute bottom-3 right-3 h-2.5 w-2.5 rounded-full bg-[#f3e9c6]" />
           </div>
           <div className="absolute inset-x-0 bottom-[42%] text-center text-[22px] font-semibold text-white/60"></div>
-        </div>
+        </div>}
         {/* frame thickness: stacked slices for a true rounded edge */}
-        {Array.from({ length: T }).map((_, i) => (
+        {!compact && Array.from({ length: T }).map((_, i) => (
           <div key={i} aria-hidden className={`phone-depth absolute inset-0 ${R}`} style={{ transform: `translateZ(-${i + 0.5}px)`, background: `linear-gradient(90deg,#5a5f68 0%,#d9dce1 var(--edge),#4d5159 100%)` }} />
         ))}
         {/* side buttons sit on the edge */}
-        <div aria-hidden className="phone-depth absolute -left-[3px] top-[19%] h-[6%] w-[4px] rounded-l-[3px] bg-[linear-gradient(90deg,#7b808a,#c7cbd1)]" style={{ transform: `translateZ(-${T / 2}px)` }} />
-        <div aria-hidden className="phone-depth absolute -left-[3px] top-[28%] h-[9%] w-[4px] rounded-l-[3px] bg-[linear-gradient(90deg,#7b808a,#c7cbd1)]" style={{ transform: `translateZ(-${T / 2}px)` }} />
-        <div aria-hidden className="phone-depth absolute -right-[3px] top-[25%] h-[12%] w-[4px] rounded-r-[3px] bg-[linear-gradient(270deg,#7b808a,#c7cbd1)]" style={{ transform: `translateZ(-${T / 2}px)` }} />
+        {!compact && <>
+          <div aria-hidden className="phone-depth absolute -left-[3px] top-[19%] h-[6%] w-[4px] rounded-l-[3px] bg-[linear-gradient(90deg,#7b808a,#c7cbd1)]" style={{ transform: `translateZ(-${T / 2}px)` }} />
+          <div aria-hidden className="phone-depth absolute -left-[3px] top-[28%] h-[9%] w-[4px] rounded-l-[3px] bg-[linear-gradient(90deg,#7b808a,#c7cbd1)]" style={{ transform: `translateZ(-${T / 2}px)` }} />
+          <div aria-hidden className="phone-depth absolute -right-[3px] top-[25%] h-[12%] w-[4px] rounded-r-[3px] bg-[linear-gradient(270deg,#7b808a,#c7cbd1)]" style={{ transform: `translateZ(-${T / 2}px)` }} />
+        </>}
         {/* front */}
         <div className={`absolute inset-0 ${R} bg-[linear-gradient(160deg,#9aa0a9,#3d4148_30%,#1d1f23)] p-[3px] shadow-[0_60px_90px_-40px_rgba(29,29,31,.55)]`}>
           <div className="h-full w-full rounded-[45px] bg-black p-[8px]">

@@ -147,9 +147,10 @@ export function Eyebrow({ children, className = '' }: { children: ReactNode; cla
 
 /** Realistic editorial photography. `id` is an Unsplash photo id. */
 export function Photo({ id, alt, className = '', w = 1400 }: { id: string; alt: string; className?: string; w?: number }) {
+  const mobileWidth = Math.min(w, 640)
   return (
     <div className={`relative overflow-hidden bg-paper-2 ${className}`}>
-      <img src={`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=80&w=${w}`} alt={alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      <img src={`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=80&w=${w}`} srcSet={`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=80&w=${mobileWidth} ${mobileWidth}w, https://images.unsplash.com/photo-${id}?auto=format&fit=crop&q=80&w=${w} ${w}w`} sizes="(max-width: 767px) 100vw, 1400px" alt={alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
     </div>
   )
 }

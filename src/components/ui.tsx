@@ -129,9 +129,9 @@ type BtnProps = { to: string; children: ReactNode; variant?: 'primary' | 'second
 export function Button({ to, children, variant = 'primary', className = '', arrow = true }: BtnProps) {
   const base = 'group inline-flex items-center gap-2 text-[14px] font-medium transition-[transform,filter,background-color,border-color,color] duration-200 hover:-translate-y-px'
   const styles = {
-    primary: 'grad-signal text-white px-6 h-11 rounded-full shadow-[0_10px_24px_-10px_rgba(31,143,63,.7),inset_0_1px_0_rgba(255,255,255,.35)] hover:brightness-105',
+    primary: 'bg-signal text-ink px-6 h-11 rounded-full shadow-[0_10px_24px_-10px_rgba(31,143,63,.45)] hover:bg-[#58df72]',
     secondary: 'bg-white/60 backdrop-blur-xl border border-white shadow-[0_6px_20px_-12px_rgba(29,29,31,.35)] text-ink hover:border-ink/40 px-5 h-11 rounded-full',
-    dark: 'bg-gradient-to-b from-[#3a3a3c] to-ink text-white px-5 h-11 rounded-full',
+    dark: 'bg-ink text-white px-5 h-11 rounded-full hover:bg-[#353537]',
     ghost: 'text-ink hover:text-signal-deep',
   }[variant]
   return (

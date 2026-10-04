@@ -59,6 +59,11 @@
   .kinetic-panel:hover { transform: translateY(-7px) rotate(-.45deg); box-shadow: 0 26px 45px -28px rgba(29,29,31,.42); }
   .product-tile { border-radius: 20px; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s cubic-bezier(.2,.7,.2,1); }
   .product-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 34px -28px rgba(29,29,31,.55); }
+  .interactive-card { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s cubic-bezier(.2,.7,.2,1), background-color .35s ease; }
+  .interactive-card:hover { transform: translateY(-5px); box-shadow: 0 18px 34px -25px rgba(0,0,0,.5); }
+  .accent-line { position: relative; }.accent-line::after { content: ''; position: absolute; bottom: -4px; left: 0; height: 2px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .32s cubic-bezier(.2,.7,.2,1); }.accent-line:hover::after { transform: scaleX(1); }
+  .phone-shell { transition: transform .5s cubic-bezier(.2,.7,.2,1); }.phone-shell:hover { transform: translateY(-7px) rotate(-1deg); }
+  .nav-pulse { animation: navPulse 2.8s ease-in-out infinite; } @keyframes navPulse { 50% { transform: scale(1.06); } }
   .brand-motif { display: grid; grid-template-columns: repeat(2, 1fr); width: 90px; aspect-ratio: 1; gap: 4px; transform: rotate(45deg); }
   .brand-motif span { background: currentColor; border-radius: 999px 999px 999px 8px; }.brand-motif span:nth-child(2), .brand-motif span:nth-child(3) { transform: rotate(90deg); }
   .brand-motif-blue { color: #63d6ff; }.brand-motif-green { color: #58df72; }.brand-motif-coral { color: #ff998d; }.brand-motif-yellow { color: #ffce31; }
@@ -105,6 +110,8 @@
   .vector-stroke, .vector-float, .vector-bob { animation: none; }
   .kinetic-panel:hover { transform: none; box-shadow: none; }
   .product-tile:hover { transform: none; box-shadow: none; }
+  .interactive-card:hover, .phone-shell:hover { transform: none; box-shadow: none; }
+  .nav-pulse { animation: none; }
   .color-scene { min-height: 250px; }
   .color-scene:hover { transform: none; }
   .color-scene:hover .color-card-front { transform: rotate(-6deg); }

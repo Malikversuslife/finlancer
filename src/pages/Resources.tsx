@@ -25,7 +25,7 @@ export default function Resources() {
       <section id="finance" className="mx-auto max-w-[1280px] scroll-mt-24 px-5 py-16 md:px-10">
         <div className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <a href="#finance" className="group block">
+            <a href="#finance" className="interactive-card group block rounded-[24px]">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] bg-[#dcecff] p-6"><span className="absolute right-[-20px] top-[-20px] h-40 w-40 rounded-full bg-sky" /><span className="absolute bottom-[-45px] left-[12%] h-44 w-44 rotate-12 bg-[#ffce31]" /><p className="relative z-10 max-w-[280px] text-[clamp(2rem,4vw,3.6rem)] font-semibold leading-[.88] tracking-[-.055em]">Freelance money, explained clearly.</p></div>
               <p className="label mt-6 text-signal-deep">Freelancer Finance · Feature</p>
               <h2 className="mt-3 text-[clamp(1.8rem,3.4vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.035em] group-hover:underline group-hover:decoration-1 group-hover:underline-offset-8">The quiet month: planning for the gaps between projects</h2>
@@ -52,7 +52,7 @@ export default function Resources() {
             <div className="lg:col-span-4"><p className="label text-mute">Guides</p><h2 className="mt-4 text-[clamp(1.8rem,3.4vw,2.8rem)] font-semibold leading-[1.05] tracking-[-0.035em]">Get the most from Finlancer.</h2></div>
             <ul className="lg:col-span-7 lg:col-start-6">
               {GUIDES.map(([n, t]) => (
-                <li key={n}><Link to="/help" className="group flex items-center gap-6 border-t border-line py-5 text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">
+                <li key={n}><Link to="/help" className="accent-line group flex items-center gap-6 border-t border-line py-5 text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">
                   <span className="label text-mute">{n}</span><span className="flex-1">{t}</span><ArrowUpRight size={18} strokeWidth={1.9} className="text-mute transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
                 </Link></li>
               ))}
@@ -64,7 +64,7 @@ export default function Resources() {
       <section id="updates" className="mx-auto max-w-[1280px] scroll-mt-24 px-5 py-24 md:px-10">
         <p className="label text-mute">Product Updates</p>
         <div className="mt-6 grid gap-px bg-line md:grid-cols-3">
-          {UPDATES.map(([d, t]) => <div key={t} className="bg-paper py-6 md:pr-8"><p className="label tnum text-signal-deep">{d}</p><p className="mt-3 text-[20px] font-medium leading-snug">{t}</p></div>)}
+          {UPDATES.map(([d, t]) => <div key={t} className="interactive-card bg-paper py-6 md:pr-8"><p className="label tnum text-signal-deep">{d}</p><p className="mt-3 text-[20px] font-medium leading-snug">{t}</p></div>)}
         </div>
         <div className="mt-20 flex flex-col justify-between gap-6 border-t border-ink pt-10 md:flex-row md:items-end">
           <h3 className="text-[clamp(1.6rem,3vw,2.4rem)] font-semibold tracking-[-0.03em]">Looking for an answer?</h3>

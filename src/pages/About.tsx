@@ -1,5 +1,4 @@
 import { Eyebrow, Reveal } from '../components/ui'
-import { EditorialIllustration } from '../components/Illustration'
 import { FinalCTA } from '../components/Stories'
 
 export default function About() {
@@ -10,8 +9,9 @@ export default function About() {
         <h1 className="mt-6 max-w-[1000px] text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">Independent work creates a different relationship with money.</h1>
       </section>
       <section className="mx-auto max-w-[1280px] px-5 md:px-10">
-        <div className="kinetic-panel relative min-h-[360px] overflow-hidden rounded-[28px] bg-[#fff3d7] p-6 md:p-12">
-          <EditorialIllustration scene="about" className="mx-auto max-h-[460px] max-w-[650px]" />
+        <div className="relative min-h-[360px] overflow-hidden rounded-[24px] bg-ink p-7 text-paper md:p-12">
+          <div className="absolute -right-12 -top-12 h-60 w-60 rounded-full border-[34px] border-signal" /><div className="absolute bottom-[-85px] left-[10%] h-52 w-52 rotate-12 bg-[#ffce31]" />
+          <p className="relative z-10 max-w-[690px] text-[clamp(2.4rem,6vw,5.5rem)] font-semibold leading-[.86] tracking-[-.07em]">Independent work does not move in a straight line.</p>
         </div>
       </section>
       <section className="mx-auto grid max-w-[1280px] gap-12 px-5 py-28 md:px-10 lg:grid-cols-12">

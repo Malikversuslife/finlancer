@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Phone, IncomeScreen, ExpensesScreen } from '../components/Phone'
 import { PageHero, Reveal, SectionHead, money } from '../components/ui'
-import { EditorialIllustration } from '../components/Illustration'
 import { SpendCalc, FinalCTA } from '../components/Stories'
 
 const SOURCES = [['Acme Studio', 3800, 'bg-ink'], ['Northwind Press', 2200, 'bg-signal'], ['Licensing', 1900, 'bg-sky'], ['Workshops', 1520, 'bg-violet']] as const
@@ -45,8 +44,7 @@ export default function Money() {
       <Flow />
       <section className="bg-paper-2 py-28">
         <div className="mx-auto grid max-w-[1280px] gap-14 px-5 md:px-10 lg:grid-cols-12">
-          <div className="kinetic-panel relative flex h-[420px] items-center justify-center overflow-hidden rounded-[28px] bg-[#fff3d7] p-6 lg:col-span-5 lg:h-auto">
-            <EditorialIllustration scene="money" className="max-h-[440px]" />
+          <div className="relative flex h-[420px] items-end overflow-hidden rounded-[24px] bg-ink p-7 text-paper lg:col-span-5 lg:h-auto"><span className="absolute -right-10 -top-10 h-52 w-52 rounded-full border-[30px] border-signal" /><span className="absolute bottom-[-45px] right-[20%] h-40 w-40 rotate-12 bg-[#ffce31]" /><p className="relative z-10 max-w-[340px] text-[clamp(2rem,4vw,3.6rem)] font-semibold leading-[.88] tracking-[-.06em]">Know the shape of your working year.</p>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <SectionHead eyebrow="Spending patterns" title="The patterns that only show up over months." />

@@ -191,7 +191,7 @@ export const PHOTOS = {
 export function PageHero({ eyebrow, title, body, children }: { eyebrow: string; title: ReactNode; body: string; children?: ReactNode }) {
   return (
     <section className="relative isolate overflow-hidden">
-      <GradientField className="-z-10" />
+      <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden bg-paper"><div className="absolute -right-14 -top-20 h-72 w-72 rounded-full bg-mint" /><div className="absolute bottom-[-160px] left-[18%] h-80 w-80 rounded-full border-[48px] border-[#dcecff]" /><div className="absolute left-[54%] top-[18%] h-14 w-14 rotate-12 bg-[#ffce31]" /></div>
       <div className="mx-auto grid max-w-[1280px] gap-12 px-5 pb-16 pt-32 md:px-10 md:pt-40 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
           <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>

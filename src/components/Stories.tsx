@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Phone, InvoiceFlowScreen, TaxScreen, GoalsScreen, GoalCreateScreen } from './Phone'
 import { Button, CountUp, Eyebrow, Reveal, money, useScrollProgress, Photo, PHOTOS, Parallax } from './ui'
-import { EditorialIllustration } from './Illustration'
 
 /* Generic sticky story: narrative steps left, phone right */
 function StickyStory({ eyebrow, title, steps, render, tall = 'h-[260vh] md:h-[340vh]', bg = '' }: {
@@ -270,9 +269,10 @@ export function LifeToProduct() {
 export function PhotoBand({ id, alt, caption }: { id: string; alt: string; caption: string }) {
   return (
     <section className="mx-auto max-w-[1280px] px-5 md:px-10">
-      <div className="kinetic-panel relative flex min-h-[380px] items-center justify-center overflow-hidden rounded-[28px] bg-[#dcecff] p-8">
-        <EditorialIllustration scene={id.includes('studio') ? 'goals' : id.includes('cafe') ? 'invoice' : 'money'} className="max-h-[500px] max-w-[680px]" />
-        <p className="absolute bottom-6 left-6 max-w-[360px] rounded-[12px] bg-ink px-4 py-3 text-[15px] text-paper">{caption}</p>
+      <div className="relative flex min-h-[380px] items-end overflow-hidden rounded-[24px] bg-ink p-7 text-paper md:p-10">
+        <div className="absolute right-[8%] top-[12%] h-44 w-44 rounded-full border-[30px] border-signal" />
+        <div className="absolute bottom-[-60px] right-[20%] h-48 w-48 rotate-12 bg-[#ffce31]" />
+        <div className="relative z-10 max-w-[620px]"><p className="label text-signal">Made for independent work</p><p className="mt-5 text-[clamp(2.2rem,5vw,4.8rem)] font-semibold leading-[.9] tracking-[-.065em]">The work is yours. Your financial system should be too.</p><p className="mt-6 max-w-[430px] text-[15px] leading-relaxed text-paper/65">{caption}</p></div>
       </div>
     </section>
   )

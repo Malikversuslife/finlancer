@@ -78,7 +78,7 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
         {/* front */}
         <div className={`absolute inset-0 ${R} bg-[linear-gradient(160deg,#9aa0a9,#3d4148_30%,#1d1f23)] p-[3px] shadow-[0_60px_90px_-40px_rgba(29,29,31,.55)]`}>
           <div className="h-full w-full rounded-[45px] bg-black p-[8px]">
-            <div className={`relative h-full w-full overflow-hidden rounded-[37px] ${tone === 'light' ? 'bg-[linear-gradient(180deg,#eef0f9_0%,#f8f8fb_45%,#edf2fb_100%)]' : 'bg-black'} text-[#000]`}>
+            <div className={`relative h-full w-full overflow-hidden rounded-[37px] ${tone === 'light' ? 'bg-[#f7f5ee]' : 'bg-black'} text-[#000]`}>
               <div className="absolute left-1/2 top-2.5 z-30 h-[25px] w-[88px] -translate-x-1/2 rounded-full bg-black" />
               <div className="relative z-20 flex h-10 items-end justify-between px-7 pb-1 text-[11px] font-semibold tnum"><span>9:41</span><span className="flex items-center gap-1"><Signal size={11} strokeWidth={2.6} /><Wifi size={11} strokeWidth={2.6} /><BatteryFull size={15} strokeWidth={2} /></span></div>
               <div className="h-[calc(100%-40px)] overflow-hidden">{children}</div>
@@ -96,10 +96,10 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
 /* ======================================================================
    iOS primitives
    ====================================================================== */
-const CARD = 'bg-[radial-gradient(120%_140%_at_85%_100%,#3a3b44_0%,#1b1b20_45%,#0d0d10_100%)] text-white shadow-[0_18px_30px_-16px_rgba(13,13,16,.8),inset_0_1px_0_rgba(255,255,255,.12)]'
+const CARD = 'bg-[#06132b] text-white shadow-[0_18px_30px_-16px_rgba(6,19,43,.7)]'
 const TINT = {
-  green: 'bg-[#16171b]', blue: 'bg-[#16171b]', orange: 'bg-[#16171b]', red: 'bg-[#16171b]',
-  purple: 'bg-[#16171b]', teal: 'bg-[#16171b]', indigo: 'bg-[#16171b]', gray: 'bg-[#8e8e93]',
+  green: 'bg-[#34c759]', blue: 'bg-[#1f5eff]', orange: 'bg-[#ffb62f]', red: 'bg-[#ff735f]',
+  purple: 'bg-[#7e43d8]', teal: 'bg-[#25b7ae]', indigo: 'bg-[#3458bd]', gray: 'bg-[#8e8e93]',
 }
 export type Tint = keyof typeof TINT
 
@@ -162,7 +162,7 @@ export function Row({ l, s, r, pos, tone }: { l: string; s: string; r: string; p
 }
 
 const Btn = ({ children, icon: I }: { children: ReactNode; icon?: Icon }) => (
-  <div className="mx-4 flex h-11 items-center justify-center gap-1.5 rounded-full bg-[#16171b] text-[12.5px] font-semibold text-white shadow-[0_10px_20px_-10px_rgba(13,13,16,.7)]">{I && <I size={15} strokeWidth={2} />}{children}</div>
+  <div className="mx-4 flex h-11 items-center justify-center gap-1.5 rounded-full bg-[#34c759] text-[12.5px] font-semibold text-[#06132b] shadow-[0_10px_20px_-10px_rgba(31,143,63,.45)]">{I && <I size={15} strokeWidth={2} />}{children}</div>
 )
 
 /** White action tile with black icon disc, as in the reference */
@@ -177,10 +177,10 @@ export function TabBar({ active = 0 }: { active?: number }) {
   const items: Icon[] = [Home, BarChart3, Wallet, User]
   const a = Math.min(active, 3)
   return (
-    <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#eef1f8] via-[#eef1f8]/80 to-transparent px-6 pb-5 pt-6">
+    <div className="absolute inset-x-0 bottom-0 z-10 bg-[#f7f5ee] px-6 pb-5 pt-6">
       <div className="flex items-center justify-between rounded-full bg-white px-1.5 py-1.5 shadow-[0_10px_24px_-12px_rgba(20,22,40,.3)]">
         {items.map((I, i) => (
-          <span key={i} className={`flex h-10 w-10 items-center justify-center rounded-full ${i === a ? 'bg-[#16171b] text-white' : 'text-[#3a3b44]'}`}><I size={19} strokeWidth={1.8} /></span>
+          <span key={i} className={`flex h-10 w-10 items-center justify-center rounded-full ${i === a ? 'bg-[#06132b] text-white' : 'text-[#3a3b44]'}`}><I size={19} strokeWidth={1.8} /></span>
         ))}
       </div>
     </div>
@@ -206,7 +206,7 @@ export function OverviewScreen({ available = 6840 }: { available?: number }) {
     <div className="relative h-full">
       <div className="flex items-center justify-between px-4 pt-2">
         <div className="flex items-center gap-2.5">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(145deg,#3a3b44,#0d0d10)] text-[12px] font-semibold text-white">MR</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1f5eff] text-[12px] font-semibold text-white">MR</span>
           <div><p className="text-[10px] text-[#8a8b94]">Good Morning</p><p className="text-[14px] font-semibold leading-tight">Maya Reyes</p></div>
         </div>
         <Bell2 />
@@ -215,7 +215,7 @@ export function OverviewScreen({ available = 6840 }: { available?: number }) {
       <div className={`mx-4 mt-2 rounded-[18px] p-4 ${CARD}`}>
         <div className="flex items-center justify-between"><span className="text-[12px] font-semibold text-white/85">Finlancer</span><span className="text-[9px] font-medium uppercase tracking-[0.14em] text-white/60">Available</span></div>
         <p className="mt-3 text-[9.5px] text-white/55">Available to spend</p>
-        <p className="bg-gradient-to-r from-white via-white/90 to-white/50 bg-clip-text text-[28px] font-semibold tracking-[-0.02em] text-transparent tnum">{money(available)}.00</p>
+        <p className="text-[28px] font-semibold tracking-[-0.02em] text-white tnum">{money(available)}.00</p>
         <div className="mt-2 flex justify-between text-[9.5px] text-white/60"><span>Tax reserved $7,410</span><span className="text-right">This month<br /><b className="text-white/90">+$9,420</b></span></div>
       </div>
       <div className="mx-4 mt-3 grid grid-cols-3 gap-2">

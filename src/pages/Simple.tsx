@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ArrowRight, ChevronDown, Home, SearchX } from 'lucide-react'
 import { Link } from 'react-router'
-import { Button, Eyebrow } from '../components/ui'
+import { Button, Eyebrow, Photo } from '../components/ui'
 
 function Shell({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children: React.ReactNode }) {
   return (
@@ -121,10 +121,12 @@ export function NotFound() {
             </div>
           </div>
 
-          <div className="relative min-h-[300px] overflow-hidden rounded-[28px] border border-ink bg-[#1378ea] p-6 text-paper shadow-[10px_10px_0_rgba(29,29,31,.12)] md:min-h-[410px] md:p-9 lg:col-span-5">
-            <p className="label text-paper/60">Wrong turn</p>
-            <div className="absolute left-1/2 top-1/2 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[18px] border-[#ffce31] bg-paper text-ink shadow-[0_18px_0_rgba(29,29,31,.2)] md:h-52 md:w-52 md:border-[24px]">
-              <SearchX size={72} strokeWidth={1.7} aria-hidden />
+          <div className="relative min-h-[300px] overflow-hidden rounded-[28px] border border-ink bg-ink text-paper shadow-[10px_10px_0_rgba(29,29,31,.12)] md:min-h-[410px] lg:col-span-5">
+            <Photo id="1534430071631-854ff55eec78" alt="Freelancer working at a cafe" className="absolute inset-0 h-full w-full opacity-85" w={1200} />
+            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#06132b]/95 via-[#06132b]/26 to-[#06132b]/15" />
+            <p className="relative z-10 p-6 label text-paper/70 md:p-9">Wrong turn</p>
+            <div className="absolute left-1/2 top-1/2 z-10 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[14px] border-[#ffce31] bg-paper/95 text-ink shadow-[0_18px_0_rgba(6,19,43,.35)] md:h-44 md:w-44 md:border-[18px]">
+              <SearchX size={58} strokeWidth={1.7} aria-hidden />
             </div>
             <div className="absolute bottom-7 left-7 right-7 flex items-center justify-between border-t border-white/25 pt-4 text-[13px] md:bottom-9 md:left-9 md:right-9">
               <span>Finlancer navigator</span>

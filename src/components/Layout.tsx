@@ -98,27 +98,27 @@ function Header() {
       )}
 
       {drawer && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-paper lg:hidden">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-[#06132b] text-paper lg:hidden">
           <div className="flex h-16 items-center justify-between px-5">
-            <Logo className="text-[14px]" />
-            <button className="flex h-11 w-11 items-center justify-center" aria-label="Close menu" onClick={() => setDrawer(false)}><X size={20} strokeWidth={1.9} /></button>
+            <Logo className="text-[14px] text-paper" />
+            <button className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-paper transition-colors hover:border-signal hover:text-signal" aria-label="Close menu" onClick={() => setDrawer(false)}><X size={20} strokeWidth={1.9} /></button>
           </div>
           <nav className="menu-in px-5 pb-10 pt-4" aria-label="Mobile">
-            <button className="flex w-full items-center justify-between border-b border-line py-4 text-[24px] font-medium tracking-tight" aria-expanded={mobileProduct} onClick={() => setMobileProduct(v => !v)}>
+            <button className="flex w-full items-center justify-between border-b border-white/15 py-4 text-[24px] font-medium tracking-tight text-paper" aria-expanded={mobileProduct} onClick={() => setMobileProduct(v => !v)}>
               Product <ChevronDown size={20} strokeWidth={1.9} className={`transition-transform ${mobileProduct ? 'rotate-180' : ''}`} />
             </button>
             {mobileProduct && (
-              <div className="menu-in border-b border-line py-2">
+              <div className="menu-in border-b border-white/15 py-2">
                 {[...PRODUCT_NAV.slice(0, 5), { to: '/intelligence', t: 'Finlancer Intelligence', d: 'Financial intelligence that sees the bigger picture.' }].map(i => (
-                  <Link key={i.to} to={i.to} className="block py-3 pl-1">
-                    <p className={`text-[15px] ${i.to === '/intelligence' ? 'font-medium text-signal-deep' : ''}`}>{i.t}</p>
-                    <p className="text-[12px] text-mute">{i.d}</p>
+                  <Link key={i.to} to={i.to} className="block rounded-[12px] py-3 pl-3 transition-colors hover:bg-white/8">
+                    <p className={`text-[15px] ${i.to === '/intelligence' ? 'font-medium text-signal' : 'text-paper'}`}>{i.t}</p>
+                    <p className="mt-0.5 text-[12px] leading-snug text-paper/55">{i.d}</p>
                   </Link>
                 ))}
               </div>
             )}
             {[['/resources', 'Resources'], ['/about', 'About'], ['/pricing', 'Pricing'], ['/contact', 'Sign in']].map(([to, l]) => (
-              <Link key={to + l} to={to} className="block border-b border-line py-4 text-[24px] font-medium tracking-tight">{l}</Link>
+              <Link key={to + l} to={to} className="block border-b border-white/15 py-4 text-[24px] font-medium tracking-tight text-paper transition-colors hover:text-signal">{l}</Link>
             ))}
             <Button to="/contact" className="mt-8 w-full justify-center">Get started</Button>
           </nav>

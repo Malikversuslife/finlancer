@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Finlancer</title>
+  <desc id="desc">A preview of the Finlancer website for independent professionals.</desc>
+  <rect width="1200" height="630" fill="#f5f5f7"/>
+  <rect x="720" width="480" height="630" fill="#d9f5df"/>
+  <circle cx="1130" cy="64" r="124" fill="none" stroke="#ffce31" stroke-width="36"/>
+  <g fill="#1d1d1f" font-family="Inter, Arial, sans-serif">
+    <text x="76" y="82" font-size="20" font-weight="700" letter-spacing="3">FINLANCER</text>
+    <text x="76" y="225" font-size="86" font-weight="700" letter-spacing="-6">The money</text>
+    <text x="76" y="306" font-size="86" font-weight="700" letter-spacing="-6">side of</text>
+    <text x="76" y="387" font-size="86" font-weight="700" letter-spacing="-6" fill="#1f8f3f">freelancing.</text>
+    <text x="80" y="468" font-size="24" fill="#424245">Income, invoices, tax and goals in one</text>
+    <text x="80" y="500" font-size="24" fill="#424245">mobile financial home.</text>
+  </g>
+  <rect x="804" y="112" width="258" height="458" rx="44" fill="#191a1d"/>
+  <rect x="814" y="122" width="238" height="438" rx="35" fill="#f3f7fb"/>
+  <rect x="886" y="134" width="94" height="24" rx="12" fill="#000"/>
+  <text x="838" y="193" fill="#1d1d1f" font-family="Inter, Arial, sans-serif" font-size="14">Good morning</text>
+  <text x="838" y="217" fill="#1d1d1f" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Maya Reyes</text>
+  <rect x="834" y="246" width="198" height="132" rx="20" fill="#fff" stroke="#e1e7ee"/>
+  <text x="852" y="274" fill="#6e6e73" font-family="Inter, Arial, sans-serif" font-size="12">AVAILABLE TO SPEND</text>
+  <text x="852" y="321" fill="#06132b" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700">$6,840</text>
+  <text x="852" y="350" fill="#1f8f3f" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700">+$9,420 this month</text>
+  <rect x="834" y="402" width="198" height="48" rx="14" fill="#fff" stroke="#e1e7ee"/>
+  <circle cx="858" cy="426" r="11" fill="#34c759"/>
+  <text x="880" y="431" fill="#1d1d1f" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Acme Studio paid</text>
+  <rect x="834" y="482" width="198" height="48" rx="24" fill="#fff" stroke="#e1e7ee"/>
+  <circle cx="868" cy="506" r="17" fill="#06132b"/>
+  <circle cx="918" cy="506" r="17" fill="#f3f7fb"/>
+  <circle cx="968" cy="506" r="17" fill="#f3f7fb"/>
+  <circle cx="1014" cy="506" r="17" fill="#f3f7fb"/>
+</svg>

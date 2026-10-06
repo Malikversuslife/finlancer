@@ -1,5 +1,10 @@
 {
-  "description": "A responsive marketing website showcasing a mobile financial OS that helps freelancers manage income, expenses, invoices, taxes, and financial goals seamlessly.",
+  "title": "Finlancer",
+  "description": "The mobile financial operating system for independent work.",
+  "language": "en",
+  "openGraph": {
+    "image": "https://finlancer-virid.vercel.app/finlancer-preview.svg"
+  },
   "robots": {
     "index": false
   },

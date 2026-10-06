@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown, Home, SearchX } from 'lucide-react'
+import { Link } from 'react-router'
 import { Button, Eyebrow } from '../components/ui'
 
 function Shell({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children: React.ReactNode }) {
@@ -94,5 +95,59 @@ export function Contact() {
 }
 
 export function NotFound() {
-  return <Shell eyebrow="404" title="This page doesn't exist."><Button to="/">Back to Finlancer</Button></Shell>
+  const destinations = [
+    { to: '/product', label: 'Explore the product', detail: 'See how Finlancer brings your money together.' },
+    { to: '/resources', label: 'Visit resources', detail: 'Practical notes for independent work.' },
+    { to: '/contact', label: 'Get in touch', detail: 'Ask a question or join early access.' },
+  ]
+
+  return (
+    <section className="relative isolate overflow-hidden bg-paper px-5 pb-20 pt-28 md:px-10 md:pb-28 md:pt-36">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-20 top-20 h-72 w-72 rounded-full border-[42px] border-[#ffce31] md:-left-10 md:h-[29rem] md:w-[29rem] md:border-[58px]" />
+        <div className="absolute -right-24 bottom-[-7rem] h-80 w-80 rounded-full bg-[#b9f2ca] md:right-[-3rem] md:h-[34rem] md:w-[34rem]" />
+        <div className="absolute right-[17%] top-[16%] h-14 w-14 rounded-full bg-[#9c7ced] md:h-20 md:w-20" />
+      </div>
+
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <p className="label text-mute">Error 404</p>
+            <h1 className="mt-6 max-w-[760px] text-[clamp(3.5rem,9vw,8.5rem)] font-semibold leading-[0.82] tracking-[-0.075em]">Looks like this route took a detour.</h1>
+            <p className="mt-8 max-w-[480px] text-[17px] leading-relaxed text-ink-2">The page you are looking for may have moved, or it may not exist yet. Your financial home is still right where you left it.</p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Button to="/" className="!bg-ink !text-paper hover:!bg-[#353537]">Back home</Button>
+              <Button to="/product" variant="secondary">Explore Finlancer</Button>
+            </div>
+          </div>
+
+          <div className="relative min-h-[300px] overflow-hidden rounded-[28px] border border-ink bg-[#1378ea] p-6 text-paper shadow-[10px_10px_0_rgba(29,29,31,.12)] md:min-h-[410px] md:p-9 lg:col-span-5">
+            <p className="label text-paper/60">Wrong turn</p>
+            <div className="absolute left-1/2 top-1/2 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[18px] border-[#ffce31] bg-paper text-ink shadow-[0_18px_0_rgba(29,29,31,.2)] md:h-52 md:w-52 md:border-[24px]">
+              <SearchX size={72} strokeWidth={1.7} aria-hidden />
+            </div>
+            <div className="absolute bottom-7 left-7 right-7 flex items-center justify-between border-t border-white/25 pt-4 text-[13px] md:bottom-9 md:left-9 md:right-9">
+              <span>Finlancer navigator</span>
+              <span className="rounded-full bg-paper px-3 py-1.5 font-medium text-ink">Re-routing</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 border-t border-ink/15 pt-7 md:mt-24">
+          <p className="label text-mute">Try one of these instead</p>
+          <div className="mt-5 grid gap-px overflow-hidden rounded-[18px] border border-line bg-line md:grid-cols-3">
+            {destinations.map(({ to, label, detail }, index) => (
+              <Link key={to} to={to} className="group bg-paper p-6 transition-colors hover:bg-[#e8f8ed] md:min-h-[190px]">
+                <span className="label text-mute">0{index + 1}</span>
+                <p className="mt-9 flex items-center justify-between gap-3 text-[19px] font-medium tracking-[-0.03em]">{label}<ArrowRight size={18} className="shrink-0 transition-transform group-hover:translate-x-1" /></p>
+                <p className="mt-2 max-w-[250px] text-[14px] leading-relaxed text-ink-2">{detail}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <Link to="/" className="mt-8 inline-flex items-center gap-2 text-[14px] text-ink-2 transition-colors hover:text-ink"><Home size={16} strokeWidth={1.8} />Finlancer home</Link>
+      </div>
+    </section>
+  )
 }

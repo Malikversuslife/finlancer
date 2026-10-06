@@ -53,7 +53,7 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
   const T = compact ? 0 : 16 // device thickness in px
   const R = 'rounded-[48px]'
   return (
-    <div ref={wrap} className={`phone-shell relative aspect-[9/19.2] w-[280px] [perspective:1100px] ${className}`}>
+    <div ref={wrap} className={`phone-shell relative aspect-[9/20] w-[280px] [perspective:1100px] ${className}`}>
       {/* contact shadow, moves with the device */}
       <div ref={shadow} aria-hidden className="phone-shadow pointer-events-none absolute inset-x-[6%] bottom-0 h-14 rounded-[50%] bg-[radial-gradient(closest-side,rgba(29,29,31,.38),transparent)] transition-transform duration-[600ms]" />
       <div ref={body} className={`phone-body relative h-full w-full ${compact ? '' : 'transition-transform duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] [transform-style:preserve-3d]'}`} style={compact ? undefined : { '--edge': '50%' } as CSSProperties}>
@@ -80,8 +80,8 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
           <div className="h-full w-full rounded-[45px] bg-black p-[8px]">
             <div className={`relative h-full w-full overflow-hidden rounded-[37px] ${tone === 'light' ? 'bg-[#f7f5ee]' : 'bg-black'} text-[#000]`}>
               <div className="absolute left-1/2 top-2.5 z-30 h-[25px] w-[88px] -translate-x-1/2 rounded-full bg-black" />
-              <div className="relative z-20 flex h-10 items-end justify-between px-7 pb-1 text-[11px] font-semibold tnum"><span>9:41</span><span className="flex items-center gap-1"><Signal size={11} strokeWidth={2.6} /><Wifi size={11} strokeWidth={2.6} /><BatteryFull size={15} strokeWidth={2} /></span></div>
-              <div className="h-[calc(100%-40px)] overflow-hidden">{children}</div>
+              <div className="relative z-20 flex h-9 items-end justify-between px-7 pb-1 text-[11px] font-semibold tnum"><span>9:41</span><span className="flex items-center gap-1"><Signal size={11} strokeWidth={2.6} /><Wifi size={11} strokeWidth={2.6} /><BatteryFull size={15} strokeWidth={2} /></span></div>
+              <div className="h-[calc(100%-36px)] overflow-hidden">{children}</div>
               <div className="absolute bottom-1.5 left-1/2 z-30 h-[4px] w-[100px] -translate-x-1/2 rounded-full bg-black/85" />
               {/* glass reflection, shifts with rotation */}
               <div ref={shine} aria-hidden className="phone-shine pointer-events-none absolute -inset-x-1/2 inset-y-0 z-40 bg-[linear-gradient(110deg,transparent_30%,rgba(255,255,255,.22)_45%,rgba(255,255,255,0)_58%)] transition-transform duration-[650ms]" />
@@ -96,7 +96,7 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
 /* ======================================================================
    iOS primitives
    ====================================================================== */
-const CARD = 'bg-[#06132b] text-white shadow-[0_18px_30px_-16px_rgba(6,19,43,.7)]'
+const CARD = 'bg-white text-[#06132b] shadow-[0_14px_28px_-18px_rgba(6,19,43,.32)]'
 const TINT = {
   green: 'bg-[#34c759]', blue: 'bg-[#1f5eff]', orange: 'bg-[#ffb62f]', red: 'bg-[#ff735f]',
   purple: 'bg-[#7e43d8]', teal: 'bg-[#25b7ae]', indigo: 'bg-[#3458bd]', gray: 'bg-[#8e8e93]',
@@ -177,10 +177,10 @@ export function TabBar({ active = 0 }: { active?: number }) {
   const items: Icon[] = [Home, BarChart3, Wallet, User]
   const a = Math.min(active, 3)
   return (
-    <div className="absolute inset-x-0 bottom-0 z-10 bg-[#f7f5ee] px-6 pb-5 pt-6">
-      <div className="flex items-center justify-between rounded-full bg-white px-1.5 py-1.5 shadow-[0_10px_24px_-12px_rgba(20,22,40,.3)]">
+    <div className="absolute inset-x-0 bottom-0 z-10 bg-[#f7f5ee] px-5 pb-2 pt-2">
+      <div className="flex items-center justify-between rounded-full bg-white px-1 py-1 shadow-[0_10px_24px_-12px_rgba(20,22,40,.3)]">
         {items.map((I, i) => (
-          <span key={i} className={`flex h-10 w-10 items-center justify-center rounded-full ${i === a ? 'bg-[#06132b] text-white' : 'text-[#3a3b44]'}`}><I size={19} strokeWidth={1.8} /></span>
+          <span key={i} className={`flex h-9 w-9 items-center justify-center rounded-full ${i === a ? 'bg-[#06132b] text-white' : 'text-[#3a3b44]'}`}><I size={17} strokeWidth={1.8} /></span>
         ))}
       </div>
     </div>
@@ -195,7 +195,7 @@ export const Insight = ({ children }: { children: ReactNode; tone?: 'signal' | '
 )
 
 const Panel = ({ children, className = '' }: { children: ReactNode; className?: string }) => (
-  <div className={`mx-4 rounded-[18px] bg-white p-3.5 shadow-[0_6px_16px_-10px_rgba(20,22,40,.25)] ${className}`}>{children}</div>
+  <div className={`mx-4 rounded-[18px] bg-white p-3 shadow-[0_6px_16px_-10px_rgba(20,22,40,.25)] ${className}`}>{children}</div>
 )
 
 /* ======================================================================
@@ -211,12 +211,12 @@ export function OverviewScreen({ available = 6840 }: { available?: number }) {
         </div>
         <Bell2 />
       </div>
-      <p className="mx-4 mt-4 text-[13px] font-semibold">My Money</p>
+      <p className="mx-4 mt-3 text-[13px] font-semibold">My Money</p>
       <div className={`mx-4 mt-2 rounded-[18px] p-4 ${CARD}`}>
-        <div className="flex items-center justify-between"><span className="text-[12px] font-semibold text-white/85">Finlancer</span><span className="text-[9px] font-medium uppercase tracking-[0.14em] text-white/60">Available</span></div>
-        <p className="mt-3 text-[9.5px] text-white/55">Available to spend</p>
-        <p className="text-[28px] font-semibold tracking-[-0.02em] text-white tnum">{money(available)}.00</p>
-        <div className="mt-2 flex justify-between text-[9.5px] text-white/60"><span>Tax reserved $7,410</span><span className="text-right">This month<br /><b className="text-white/90">+$9,420</b></span></div>
+        <div className="flex items-center justify-between"><span className="text-[12px] font-semibold">Finlancer</span><span className="text-[9px] font-medium uppercase tracking-[0.14em] text-[#6f7180]">Available</span></div>
+        <p className="mt-3 text-[9.5px] text-[#8a8b94]">Available to spend</p>
+        <p className="text-[28px] font-semibold tracking-[-0.02em] tnum">{money(available)}.00</p>
+        <div className="mt-2 flex justify-between text-[9.5px] text-[#6f7180]"><span>Tax reserved $7,410</span><span className="text-right">This month<br /><b className="text-[#1f8f3f]">+$9,420</b></span></div>
       </div>
       <div className="mx-4 mt-3 grid grid-cols-3 gap-2">
         <Action icon={ArrowUpRight} label="Invoice" />
@@ -227,7 +227,6 @@ export function OverviewScreen({ available = 6840 }: { available?: number }) {
       <div className="mx-4">
         <Cell icon={Briefcase} title="Acme Studio" sub="Invoice · Oct 16" value="+$2,400" chevron={false} />
         <Cell icon={Laptop} title="Figma" sub="Software · Oct 12" value="$45.00" chevron={false} />
-        <Cell icon={Coffee} title="Studio coffee" sub="Workspace · Oct 9" value="$6.20" chevron={false} />
       </div>
       <TabBar />
     </div>

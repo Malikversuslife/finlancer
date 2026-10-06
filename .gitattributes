@@ -12,6 +12,10 @@
 *.tiff               filter=lfs diff=lfs merge=lfs -text
 *.tif                filter=lfs diff=lfs merge=lfs -text
 *.ico                filter=lfs diff=lfs merge=lfs -text
+
+# Small public website assets must be present in Vercel's Git build rather
+# than resolved through Git LFS at deploy time.
+public/*.png          -filter -diff -merge
 *.webp               filter=lfs diff=lfs merge=lfs -text
 *.psd                filter=lfs diff=lfs merge=lfs -text
 *.ai                 filter=lfs diff=lfs merge=lfs -text

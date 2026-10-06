@@ -204,7 +204,11 @@ export function PageHero({ eyebrow, title, body, children }: { eyebrow: string; 
           </Reveal>
         </div>
         <Reveal delay={180} className="relative mx-auto flex w-full max-w-[520px] justify-center lg:col-span-5">
-          {children ?? <div className="flex min-h-[320px] w-full items-end rounded-[24px] bg-ink p-7 text-paper"><p className="max-w-[280px] text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[.9] tracking-[-.06em]">The money side of your work, in one place.</p></div>}
+          <div className="relative flex min-h-[360px] w-full items-end justify-center overflow-hidden rounded-[26px] bg-[#dcecff] px-5 pt-8 md:px-8 md:pt-10">
+            <div aria-hidden className="absolute -right-16 -top-16 h-52 w-52 rounded-full border-[28px] border-[#ffce31]" />
+            <div aria-hidden className="absolute -bottom-20 -left-16 h-44 w-44 rounded-full bg-[#9bdffb]" />
+            <div className="relative z-10 flex w-full justify-center">{children ?? <div className="flex min-h-[300px] w-full items-end rounded-[20px] bg-ink p-7 text-paper"><p className="max-w-[280px] text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[.9] tracking-[-.06em]">The money side of your work, in one place.</p></div>}</div>
+          </div>
         </Reveal>
       </div>
     </section>

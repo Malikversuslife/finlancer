@@ -15,7 +15,6 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
   const wrap = useRef<HTMLDivElement>(null)
   const body = useRef<HTMLDivElement>(null)
   const shine = useRef<HTMLDivElement>(null)
-  const shadow = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const w = wrap.current, b = body.current
     if (!w || !b) return
@@ -37,7 +36,6 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
         b.style.transform = `translateZ(${hz}px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg)`
         b.style.setProperty('--edge', `${50 + ry * 1.6}%`)
         if (shine.current) shine.current.style.transform = `translateX(${(-ry * 3).toFixed(1)}%)`
-        if (shadow.current) shadow.current.style.transform = `translate(${(ry * 1.6).toFixed(1)}px, ${(40 + hz * 0.5).toFixed(1)}px) scale(${(1 - hz / 260).toFixed(3)})`
       })
     }
     const move = (e: PointerEvent) => { const r = w.getBoundingClientRect(); hx = ((e.clientX - r.left) / r.width) * 2 - 1; hy = ((e.clientY - r.top) / r.height) * 2 - 1; hz = 70; paint() }
@@ -94,7 +92,7 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
 /* ======================================================================
    iOS primitives
    ====================================================================== */
-const CARD = 'bg-white text-[#06132b] shadow-[0_14px_28px_-18px_rgba(6,19,43,.32)]'
+const CARD = 'border border-[#e1e7ee] bg-white text-[#06132b]'
 const TINT = {
   green: 'bg-[#34c759]', blue: 'bg-[#1f5eff]', orange: 'bg-[#ffb62f]', red: 'bg-[#ff735f]',
   purple: 'bg-[#7e43d8]', teal: 'bg-[#25b7ae]', indigo: 'bg-[#3458bd]', gray: 'bg-[#8e8e93]',
@@ -139,7 +137,7 @@ const Group = ({ children, title, className = '' }: { children: ReactNode; title
 
 function Cell({ icon, title, sub, value, valueClass = '', chevron = true }: { icon?: Icon; tint?: Tint; title: string; sub?: string; value?: string; valueClass?: string; chevron?: boolean }) {
   return (
-    <div className="flex items-center gap-2.5 py-1.5">
+    <div className="flex items-center gap-2.5 border-b border-[#e8edf2] py-1.5 last:border-b-0">
       {icon && <Tile icon={icon} size={34} />}
       <div className="min-w-0 flex-1"><p className="truncate text-[11.5px] font-semibold">{title}</p>{sub && <p className="truncate text-[9.5px] text-[#8a8b94]">{sub}</p>}</div>
       <span className="flex shrink-0 items-center gap-0.5">
@@ -160,7 +158,7 @@ export function Row({ l, s, r, pos, tone }: { l: string; s: string; r: string; p
 }
 
 const Btn = ({ children, icon: I }: { children: ReactNode; icon?: Icon }) => (
-  <div className="mx-4 flex h-11 items-center justify-center gap-1.5 rounded-full bg-[#34c759] text-[12.5px] font-semibold text-[#06132b] shadow-[0_10px_20px_-10px_rgba(31,143,63,.45)]">{I && <I size={15} strokeWidth={2} />}{children}</div>
+  <div className="mx-4 flex h-11 items-center justify-center gap-1.5 rounded-full bg-[#34c759] text-[12.5px] font-semibold text-[#06132b]">{I && <I size={15} strokeWidth={2} />}{children}</div>
 )
 
 /** White action tile with black icon disc, as in the reference */
@@ -232,7 +230,7 @@ export function OverviewScreen({ available = 6840 }: { available?: number }) {
 }
 
 export function InvoiceFlowScreen({ step }: { step: number }) {
-  const clients: [string, string, Tint][] = [['Acme Studio', 'Usually pays in 34 days', 'blue'], ['Northwind Press', 'Usually pays in 12 days', 'teal'], ['Hollis & Co.', 'Usually pays in 21 days', 'orange'], ['Lumen Records', 'New client', 'purple']]
+  const clients: [string, string, Tint][] = [['Acme Studio', 'Usually pays in 34 days', 'blue'], ['Northwind Press', 'Usually pays in 12 days', 'teal'], ['Hollis & Co.', 'Usually pays in 21 days', 'orange']]
   return (
     <div className="relative h-full">
       {step === 0 && (
@@ -258,7 +256,6 @@ export function InvoiceFlowScreen({ step }: { step: number }) {
           <Group className="mt-2" title="Acme Studio · #0143">
             <Cell title="Brand system, phase 2" sub="1 × $3,200" value="$3,200" chevron={false} />
             <Cell title="Motion guidelines" sub="8 h × $95" value="$760" chevron={false} />
-            <Cell title="Asset export" sub="Fixed" value="$240" chevron={false} />
           </Group>
           <Group className="mt-3">
             <Cell icon={CalendarDays} tint="red" title="Due" value="15 Oct" />
@@ -304,7 +301,7 @@ function Status({ i }: { i: number }) {
   const s = ['Draft', 'Sent', 'Viewed', 'Paid']
   return (
     <div className="flex rounded-[10px] bg-[#e3e3e8] p-0.5">
-      {s.map((x, k) => <span key={x} className={`flex-1 rounded-[8px] py-1 text-center text-[10px] font-semibold ${k === i ? 'bg-white shadow-sm' : k < i ? 'text-[#28a745]' : 'text-[#8e8e93]'}`}>{x}</span>)}
+      {s.map((x, k) => <span key={x} className={`flex-1 rounded-[8px] py-1 text-center text-[10px] font-semibold ${k === i ? 'bg-white' : k < i ? 'text-[#28a745]' : 'text-[#8e8e93]'}`}>{x}</span>)}
     </div>
   )
 }
@@ -326,7 +323,6 @@ export function ClientsScreen() {
       <Group className="mt-3">
         <Cell icon={Building2} tint="red" title="Hollis & Co." sub="Overdue 6 days" value="$2,480" valueClass="text-[#ff3b30]" />
         <Cell icon={Briefcase} tint="blue" title="Acme Studio" sub="Avg. 34 days" value="$4,200" />
-        <Cell icon={FileText} tint="orange" title="Northwind Press" sub="Due in 3 days" value="$1,870" />
       </Group>
       <TabBar active={4} />
     </div>
@@ -339,18 +335,15 @@ export function ExpensesScreen() {
   return (
     <div className="relative h-full">
       <Nav title="Expenses" />
-      <div className="mx-4 mt-1 flex rounded-[9px] bg-[#e3e3e8] p-0.5 text-center text-[10px] font-semibold">{['Week', 'Month', 'Year'].map((x, i) => <span key={x} className={`flex-1 rounded-[7px] py-1 ${i === 1 ? 'bg-white shadow-sm' : 'text-[#3c3c43]'}`}>{x}</span>)}</div>
+      <div className="mx-4 mt-1 flex rounded-[9px] bg-[#e3e3e8] p-0.5 text-center text-[10px] font-semibold">{['Week', 'Month', 'Year'].map((x, i) => <span key={x} className={`flex-1 rounded-[7px] py-1 ${i === 1 ? 'bg-white' : 'text-[#3c3c43]'}`}>{x}</span>)}</div>
       <div className="mx-4 mt-3">
         <p className="text-[30px] font-semibold tracking-[-0.02em] tnum">{money(total)}</p>
         <div className="mt-2 flex h-2.5 gap-0.5 overflow-hidden rounded-full">{cats.map(c => <span key={c[0]} style={{ width: `${(c[1] / total) * 100}%`, background: c[4] }} />)}</div>
       </div>
       <div className="mx-4 mt-3 grid grid-cols-4 gap-2">
-        {cats.slice(0, 4).map(([l, v, I, t]) => <span key={l} className="flex flex-col items-center"><Tile icon={I} tint={t} size={50} /><span className="mt-1 text-[9.5px] font-medium">{l}</span><span className="text-[9px] text-[#8e8e93] tnum">{money(v)}</span></span>)}
+        {cats.slice(0, 4).map(([l, v, I, t]) => <span key={l} className="flex min-w-0 flex-col items-center"><Tile icon={I} tint={t} size={44} /><span className="mt-1 max-w-full truncate text-[8.5px] font-medium">{l === 'Equipment' ? 'Equipment' : l}</span><span className="text-[8.5px] text-[#8e8e93] tnum">{money(v)}</span></span>)}
       </div>
       <div className="mx-4 mt-3"><Insight tone="coral">Software expenses increased this month.</Insight></div>
-      <Group className="mt-3">
-        <Cell icon={Laptop} tint="purple" title="Adobe Creative Cloud" sub="Possibly deductible" value="-$85" chevron={false} />
-      </Group>
       <TabBar active={1} />
     </div>
   )
@@ -361,27 +354,25 @@ export function TaxScreen({ ready = 78, reserved = 7410, estimate = 9500 }: { re
   return (
     <div className="relative h-full">
       <Nav title="Tax" />
-      <div className="mx-4 mt-2 flex items-center gap-3 rounded-[16px] bg-white p-3">
-        <div className="relative h-[112px] w-[112px] shrink-0">
+      <div className="mx-4 mt-2 flex items-center gap-2 rounded-[16px] border border-[#e1e7ee] bg-white p-2.5">
+        <div className="relative h-[94px] w-[94px] shrink-0">
           <svg viewBox="0 0 110 110" className="h-full w-full -rotate-90">
             <defs><linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#5a5b66" /><stop offset="1" stopColor="#0d0d10" /></linearGradient></defs>
             <circle cx="55" cy="55" r={r} fill="none" stroke="#e5e5ea" strokeWidth="11" />
             <circle cx="55" cy="55" r={r} fill="none" stroke="url(#tg)" strokeWidth="11" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - ready / 100)} style={{ transition: 'stroke-dashoffset .6s cubic-bezier(.2,.7,.2,1)' }} />
           </svg>
-          <div className="absolute inset-0 flex flex-col items-center justify-center"><span className="text-[26px] font-bold tracking-tight tnum">{Math.round(ready)}%</span><span className="text-[9px] font-medium text-[#8e8e93]">Tax ready</span></div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center"><span className="text-[23px] font-bold tracking-tight tnum">{Math.round(ready)}%</span><span className="text-[8px] font-medium text-[#8e8e93]">Tax ready</span></div>
         </div>
-        <div className="space-y-1.5 text-[10px]">
-          <p className="text-[#8e8e93]">Estimated<br /><b className="text-[14px] text-black tnum">{money(estimate)}</b></p>
-          <p className="text-[#8e8e93]">Reserved<br /><b className="text-[14px] text-[#28a745] tnum">{money(reserved)}</b></p>
+        <div className="min-w-0 flex-1 space-y-2 text-[9px]">
+          <p className="text-[#8e8e93]">Estimated<br /><b className="whitespace-nowrap text-[13px] text-black tnum">{money(estimate)}</b></p>
+          <p className="text-[#8e8e93]">Reserved<br /><b className="whitespace-nowrap text-[13px] text-[#28a745] tnum">{money(reserved)}</b></p>
         </div>
       </div>
       <Group className="mt-3">
         <Cell icon={PiggyBank} tint="orange" title="Remaining reserve" value={money(Math.max(0, estimate - reserved))} />
         <Cell icon={Percent} tint="green" title="Deductions" sub="34 expenses" value="$3,180" />
         <Cell icon={FileText} tint="blue" title="Documents" value="12" />
-        <Cell icon={Bell} tint="red" title="Reminders" value="2" />
       </Group>
-      <div className="mx-4 mt-3"><Insight tone="amber">Your current reserve may need adjusting.</Insight></div>
       <TabBar active={1} />
     </div>
   )
@@ -410,10 +401,10 @@ export function GoalsScreen({ boost = 0 }: { boost?: number }) {
       </Panel>
       {boost > 0 && <div className="menu-in mx-4 mt-2 flex items-center gap-2 rounded-[12px] bg-white p-2 text-[10px]"><Tile icon={Repeat} tint="green" size={26} /><span className="flex-1">10% of Acme Studio payment</span><b className="text-[#28a745] tnum">+{money(boost)}</b></div>}
       <div className="mx-4 mt-3 grid grid-cols-2 gap-2">
-        {GOALS.slice(1).map(x => {
+        {GOALS.slice(1, 3).map(x => {
           const p = Math.round((x.saved / x.target) * 100)
           return (
-            <div key={x.name} className="rounded-[14px] bg-white p-2.5 shadow-[0_6px_16px_-10px_rgba(20,22,40,.25)]">
+            <div key={x.name} className="rounded-[14px] border border-[#e1e7ee] bg-white p-2.5">
               <Tile icon={x.icon} tint={x.tint} size={42} />
               <p className="mt-2 truncate text-[11px] font-semibold">{x.name}</p>
               <div className="mt-1.5 h-1.5 rounded-full bg-[#e5e5ea]"><div className={`h-full rounded-full ${TINT[x.tint]}`} style={{ width: `${p}%` }} /></div>
@@ -490,7 +481,6 @@ export function IncomeScreen() {
       <Group className="mt-3" title="Sources">
         <Cell icon={Briefcase} tint="blue" title="Client work" sub="6 clients" value="$41,200" />
         <Cell icon={Camera} tint="purple" title="Licensing" sub="Stock and fonts" value="$7,140" />
-        <Cell icon={GraduationCap} tint="orange" title="Workshops" sub="2 sessions" value="$4,500" />
       </Group>
       <TabBar active={1} />
     </div>

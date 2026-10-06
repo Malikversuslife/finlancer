@@ -122,13 +122,13 @@ export function NotFound() {
           </div>
 
           <div className="relative min-h-[300px] overflow-hidden rounded-[28px] border border-ink bg-ink text-paper shadow-[10px_10px_0_rgba(29,29,31,.12)] md:min-h-[410px] lg:col-span-5">
-            <img src="/finlancer-404-cafe.png" alt="Freelancer working at a cafe" className="absolute inset-0 h-full w-full object-cover opacity-85" />
-            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#06132b]/95 via-[#06132b]/26 to-[#06132b]/15" />
-            <p className="relative z-10 p-6 label text-paper/70 md:p-9">Wrong turn</p>
-            <div className="absolute left-1/2 top-1/2 z-10 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[14px] border-[#ffce31] bg-paper/95 text-ink shadow-[0_18px_0_rgba(6,19,43,.35)] md:h-44 md:w-44 md:border-[18px]">
+            <img src="/finlancer-404-cafe.png" alt="Freelancer working at a cafe" className="absolute inset-0 z-0 h-full w-full object-cover object-[62%_center]" />
+            <div aria-hidden className="absolute inset-0 z-10 bg-gradient-to-t from-[#06132b]/80 via-transparent to-transparent" />
+            <p className="relative z-20 p-6 label text-paper/85 md:p-9">Wrong turn</p>
+            <div className="absolute left-1/2 top-1/2 z-20 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[14px] border-[#ffce31] bg-paper/95 text-ink shadow-[0_18px_0_rgba(6,19,43,.35)] md:h-44 md:w-44 md:border-[18px]">
               <SearchX size={58} strokeWidth={1.7} aria-hidden />
             </div>
-            <div className="absolute bottom-7 left-7 right-7 flex items-center justify-between border-t border-white/25 pt-4 text-[13px] md:bottom-9 md:left-9 md:right-9">
+            <div className="absolute bottom-7 left-7 right-7 z-20 flex items-center justify-between border-t border-white/35 pt-4 text-[13px] md:bottom-9 md:left-9 md:right-9">
               <span>Finlancer navigator</span>
               <span className="rounded-full bg-paper px-3 py-1.5 font-medium text-ink">Re-routing</span>
             </div>

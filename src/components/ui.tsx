@@ -192,7 +192,7 @@ export const PHOTOS = {
 export function PageHero({ eyebrow, title, body, children }: { eyebrow: string; title: ReactNode; body: string; children?: ReactNode }) {
   return (
     <section className="product-shell relative isolate overflow-hidden">
-      <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden"><BrandMotif tone="blue" className="absolute -left-6 bottom-[-22px] h-40 w-40 opacity-80" /><div className="absolute -right-16 -top-20 h-80 w-80 rounded-full border-[48px] border-[#1a3872]" /></div>
+      <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden"><Parallax speed={0.05} className="absolute -left-6 bottom-[-22px]"><BrandMotif tone="blue" className="h-40 w-40 opacity-80" /></Parallax><Parallax speed={0.12} className="absolute -right-16 -top-20"><div className="h-80 w-80 rounded-full border-[48px] border-[#1a3872]" /></Parallax></div>
       <div className="mx-auto grid max-w-[1280px] gap-12 px-5 pb-16 pt-32 md:px-10 md:pt-40 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
           <Reveal><Eyebrow>{eyebrow}</Eyebrow></Reveal>

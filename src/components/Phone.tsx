@@ -54,8 +54,6 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
   const R = 'rounded-[48px]'
   return (
     <div ref={wrap} className={`phone-shell relative aspect-[9/20] w-[280px] [perspective:1100px] ${className}`}>
-      {/* contact shadow, moves with the device */}
-      <div ref={shadow} aria-hidden className="phone-shadow pointer-events-none absolute inset-x-[6%] bottom-0 h-14 rounded-[50%] bg-[radial-gradient(closest-side,rgba(29,29,31,.38),transparent)] transition-transform duration-[600ms]" />
       <div ref={body} className={`phone-body relative h-full w-full ${compact ? '' : 'transition-transform duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] [transform-style:preserve-3d]'}`} style={compact ? undefined : { '--edge': '50%' } as CSSProperties}>
         {/* back glass */}
         {!compact && <div className={`phone-depth absolute inset-0 ${R} bg-[linear-gradient(145deg,#eef0f3,#c9ced6_45%,#9aa1ab)] [backface-visibility:hidden]`} style={{ transform: `translateZ(-${T}px) rotateY(180deg)` }}>
@@ -76,9 +74,9 @@ export function Phone({ children, className = '', tone = 'light', pose = -16 }: 
           <div aria-hidden className="phone-depth absolute -right-[3px] top-[25%] h-[12%] w-[4px] rounded-r-[3px] bg-[linear-gradient(270deg,#7b808a,#c7cbd1)]" style={{ transform: `translateZ(-${T / 2}px)` }} />
         </>}
         {/* front */}
-        <div className={`absolute inset-0 ${R} bg-[linear-gradient(160deg,#9aa0a9,#3d4148_30%,#1d1f23)] p-[3px] shadow-[0_60px_90px_-40px_rgba(29,29,31,.55)]`}>
+        <div className={`absolute inset-0 ${R} bg-[linear-gradient(160deg,#9aa0a9,#3d4148_30%,#1d1f23)] p-[3px]`}>
           <div className="h-full w-full rounded-[45px] bg-black p-[8px]">
-            <div className={`relative h-full w-full overflow-hidden rounded-[37px] ${tone === 'light' ? 'bg-[#f7f5ee]' : 'bg-black'} text-[#000]`}>
+            <div className={`relative h-full w-full overflow-hidden rounded-[37px] ${tone === 'light' ? 'bg-[#f3f7fb]' : 'bg-black'} text-[#000]`}>
               <div className="absolute left-1/2 top-2.5 z-30 h-[25px] w-[88px] -translate-x-1/2 rounded-full bg-black" />
               <div className="relative z-20 flex h-9 items-end justify-between px-7 pb-1 text-[11px] font-semibold tnum"><span>9:41</span><span className="flex items-center gap-1"><Signal size={11} strokeWidth={2.6} /><Wifi size={11} strokeWidth={2.6} /><BatteryFull size={15} strokeWidth={2} /></span></div>
               <div className="h-[calc(100%-36px)] overflow-hidden">{children}</div>
@@ -106,21 +104,21 @@ export type Tint = keyof typeof TINT
 /** Icon chip. Outline glyph on a soft white disc; `solid` gives the black disc used on actions. */
 export function Tile({ icon: I, size = 44, solid = false }: { icon: Icon; tint?: Tint; size?: number; solid?: boolean }) {
   return (
-    <span className={`inline-flex shrink-0 items-center justify-center rounded-full ${solid ? 'bg-[#16171b] text-white' : 'bg-white text-[#1d1d22] shadow-[0_4px_12px_-6px_rgba(20,22,40,.25)]'}`} style={{ width: size, height: size }}>
+    <span className={`inline-flex shrink-0 items-center justify-center rounded-full ${solid ? 'bg-[#06132b] text-white' : 'border border-[#e1e7ee] bg-white text-[#1d1d22]'}`} style={{ width: size, height: size }}>
       <I size={size * 0.48} strokeWidth={1.8} />
     </span>
   )
 }
 
 const Bell2 = () => (
-  <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-[0_4px_12px_-6px_rgba(20,22,40,.25)]"><Bell size={17} strokeWidth={1.8} /><span className="absolute right-[9px] top-[8px] h-1.5 w-1.5 rounded-full bg-[#ff3b30]" /></span>
+  <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-[#e1e7ee] bg-white"><Bell size={17} strokeWidth={1.8} /><span className="absolute right-[9px] top-[8px] h-1.5 w-1.5 rounded-full bg-[#ff3b30]" /></span>
 )
 
 function Nav({ title, back, action }: { title: string; back?: string; action?: ReactNode; large?: boolean }) {
   return (
     <div className="flex items-center justify-between px-4 pb-1 pt-2">
       <div className="flex items-center gap-2">
-        {back && <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-[0_4px_12px_-6px_rgba(20,22,40,.25)]"><ChevronLeft size={18} strokeWidth={2} /></span>}
+        {back && <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#e1e7ee] bg-white"><ChevronLeft size={18} strokeWidth={2} /></span>}
         <div>{back && <p className="text-[9.5px] text-[#8a8b94]">{back}</p>}<h3 className="text-[17px] font-semibold leading-tight tracking-[-0.01em]">{title}</h3></div>
       </div>
       {action ?? <Bell2 />}
@@ -167,8 +165,8 @@ const Btn = ({ children, icon: I }: { children: ReactNode; icon?: Icon }) => (
 
 /** White action tile with black icon disc, as in the reference */
 const Action = ({ icon: I, label, on = false }: { icon: Icon; label: string; on?: boolean }) => (
-  <span className={`flex flex-col items-center gap-1.5 rounded-[14px] py-2.5 ${on ? 'bg-[#16171b] text-white' : 'bg-white shadow-[0_6px_16px_-10px_rgba(20,22,40,.25)]'}`}>
-    <span className={`flex h-8 w-8 items-center justify-center rounded-full ${on ? 'bg-white text-[#16171b]' : 'bg-[#16171b] text-white'}`}><I size={15} strokeWidth={2} /></span>
+  <span className={`flex flex-col items-center gap-1.5 rounded-[14px] border py-2.5 ${on ? 'border-[#06132b] bg-[#06132b] text-white' : 'border-[#e1e7ee] bg-white'}`}>
+    <span className={`flex h-8 w-8 items-center justify-center rounded-full ${on ? 'bg-white text-[#06132b]' : 'border border-[#e1e7ee] bg-[#f3f7fb] text-[#06132b]'}`}><I size={15} strokeWidth={2} /></span>
     <span className="text-[10px] font-medium">{label}</span>
   </span>
 )
@@ -177,8 +175,8 @@ export function TabBar({ active = 0 }: { active?: number }) {
   const items: Icon[] = [Home, BarChart3, Wallet, User]
   const a = Math.min(active, 3)
   return (
-    <div className="absolute inset-x-0 bottom-0 z-10 bg-[#f7f5ee] px-5 pb-2 pt-2">
-      <div className="flex items-center justify-between rounded-full bg-white px-1 py-1 shadow-[0_10px_24px_-12px_rgba(20,22,40,.3)]">
+    <div className="absolute inset-x-0 bottom-0 z-10 bg-[#f3f7fb] px-5 pb-2 pt-2">
+      <div className="flex items-center justify-between rounded-full border border-[#e1e7ee] bg-white px-1 py-1">
         {items.map((I, i) => (
           <span key={i} className={`flex h-9 w-9 items-center justify-center rounded-full ${i === a ? 'bg-[#06132b] text-white' : 'text-[#3a3b44]'}`}><I size={17} strokeWidth={1.8} /></span>
         ))}
@@ -188,14 +186,14 @@ export function TabBar({ active = 0 }: { active?: number }) {
 }
 
 export const Insight = ({ children }: { children: ReactNode; tone?: 'signal' | 'amber' | 'coral' | 'sky' }) => (
-  <div className="flex items-center gap-2.5 rounded-[14px] bg-white p-2.5 shadow-[0_6px_16px_-10px_rgba(20,22,40,.25)] text-[#000] shadow-[0_6px_16px_-10px_rgba(20,22,40,.25)]">
+  <div className="flex items-center gap-2.5 rounded-[14px] border border-[#e1e7ee] bg-white p-2.5 text-[#000]">
     <Tile icon={Lightbulb} solid size={30} />
     <p className="text-[10px] leading-snug">{children}</p>
   </div>
 )
 
 const Panel = ({ children, className = '' }: { children: ReactNode; className?: string }) => (
-  <div className={`mx-4 rounded-[18px] bg-white p-3 shadow-[0_6px_16px_-10px_rgba(20,22,40,.25)] ${className}`}>{children}</div>
+  <div className={`mx-4 rounded-[18px] border border-[#e1e7ee] bg-white p-3 ${className}`}>{children}</div>
 )
 
 /* ======================================================================

@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router'
 import { Phone, OverviewScreen } from '../components/Phone'
-import { Button, Eyebrow, Parallax, Photo, PHOTOS, Reveal } from '../components/ui'
+import { Button, CountUp, Eyebrow, Parallax, Photo, PHOTOS, Reveal } from '../components/ui'
 
 const products = [
   { n: '01', t: 'Income that adds up', d: 'See what came in, where it came from and what is changing.', c: 'bg-[#d9f5df]', to: '/money', module: { l: 'October income', a: '$13,620', d: '+18% from September', c: 'bg-signal', rows: [['Acme Studio', '$4,200'], ['Northwind Press', '$2,200']] } },
@@ -15,7 +15,31 @@ function MiniModule({ module }: { module: { l: string; a: string; d: string; c: 
 }
 
 function Hero() {
-  return <section className="bg-paper px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36"><div className="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-7"><Eyebrow>Finlancer for independent work</Eyebrow><h1 className="mt-6 max-w-[800px] text-[clamp(3.4rem,8vw,7.6rem)] font-semibold leading-[.9] tracking-[-.065em]">The money<br />side of <span className="text-signal-deep">freelancing.</span></h1><p className="mt-8 max-w-[490px] text-[17px] leading-relaxed text-ink-2">Everything between getting paid and knowing what to do next. Income, invoices, tax and goals in one mobile financial home.</p><div className="mt-9 flex flex-wrap gap-3"><Button to="/contact">Join the waitlist</Button><Button to="/product" variant="secondary">See how it works</Button></div></div><div className="relative mx-auto flex min-h-[430px] w-full justify-center overflow-hidden rounded-[26px] bg-[#d9f5df] pt-10 lg:col-span-5"><Parallax speed={0.05} className="absolute left-6 top-6"><div className="rounded-full bg-ink px-3 py-1.5 text-[11px] font-medium text-paper">Available today</div></Parallax><Parallax speed={0.11} className="absolute right-[-65px] top-[-75px]"><div className="h-48 w-48 rounded-full border-[26px] border-[#ffce31]" /></Parallax><Phone className="relative z-10 !w-[250px] sm:!w-[275px]"><OverviewScreen /></Phone></div></div></section>
+  return (
+    <section className="relative isolate overflow-hidden bg-[#06132b] px-5 pb-14 pt-28 text-paper md:px-10 md:pb-20 md:pt-36">
+      <div aria-hidden className="absolute inset-0 -z-10 opacity-50 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:42px_42px]" />
+      <div aria-hidden className="absolute -left-32 bottom-[-16rem] -z-10 h-[35rem] w-[35rem] rounded-full bg-[#1d9f55]/35 blur-3xl" />
+      <div className="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-12 lg:items-end">
+        <div className="lg:col-span-7">
+          <Eyebrow className="text-signal">Finlancer for independent work</Eyebrow>
+          <h1 className="mt-6 max-w-[800px] text-[clamp(3.5rem,8vw,7.7rem)] font-semibold leading-[.86] tracking-[-.07em]">The money side of <span className="text-[#ffce31]">freelancing.</span></h1>
+          <p className="mt-8 max-w-[510px] text-[17px] leading-relaxed text-paper/70">Everything between getting paid and knowing what to do next. Income, invoices, tax and goals in one mobile financial home.</p>
+          <div className="mt-9 flex flex-wrap gap-3"><Button to="/contact">Join the waitlist</Button><Button to="/product" variant="secondary" className="!border-white/25 !bg-white/8 !text-paper hover:!border-white/50">See how it works</Button></div>
+        </div>
+        <div className="relative mx-auto flex min-h-[470px] w-full items-end justify-center overflow-hidden rounded-[28px] border border-white/12 bg-[#153f78] pt-10 shadow-[14px_18px_0_rgba(52,199,89,.75)] lg:col-span-5">
+          <div aria-hidden className="absolute -left-16 -top-20 h-60 w-60 rounded-full border-[34px] border-[#ffce31]" />
+          <div aria-hidden className="absolute -bottom-20 right-[-4rem] h-56 w-56 rounded-full bg-[#34c759]" />
+          <Parallax speed={0.08} className="absolute left-5 top-5 z-20"><div className="rounded-full border border-white/15 bg-[#06132b]/85 px-3 py-1.5 text-[11px] font-medium text-paper">Built for your phone</div></Parallax>
+          <Phone className="relative z-10 !w-[250px] sm:!w-[280px]" pose={-8}><OverviewScreen /></Phone>
+        </div>
+      </div>
+      <div className="mx-auto mt-12 grid max-w-[1280px] border-t border-white/15 pt-5 sm:grid-cols-3">
+        {[[13620, 'Income this month', '+18% from September'], [78, 'Tax ready', '$7,410 reserved'], [420, 'Moved towards goals', 'From your latest payment']].map(([n, label, detail], i) => (
+          <div key={label as string} className={`py-4 sm:px-6 ${i ? 'sm:border-l sm:border-white/15' : ''}`}><p className="text-[clamp(1.85rem,3vw,2.7rem)] font-semibold leading-none tracking-[-.05em]"><CountUp to={n as number} prefix={i === 1 ? '' : i === 2 ? '+$' : '$'} suffix={i === 1 ? '%' : ''} /></p><p className="mt-2 text-[13px] font-medium text-paper">{label as string}</p><p className="mt-1 text-[12px] text-paper/50">{detail as string}</p></div>
+        ))}
+      </div>
+    </section>
+  )
 }
 
 function ProductGrid() {
@@ -32,7 +56,7 @@ function EditorialBreak() {
 
 function Flow() {
   const steps = [['Invoice paid', '+$4,200', 'bg-[#dcecff]'], ['Tax reserve', '$1,050', 'bg-[#fff0cd]'], ['Goal moved', '+$315', 'bg-[#eadfff]'], ['Available now', '$2,835', 'bg-[#d9f5df]']]
-  return <section className="bg-paper-2 px-5 py-20 md:px-10 md:py-32"><div className="mx-auto max-w-[1280px]"><div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><Eyebrow>A payment changes everything</Eyebrow><h2 className="mt-5 max-w-[560px] text-[clamp(2.5rem,5vw,4.8rem)] font-semibold leading-[.92] tracking-[-.065em]">One good payment can do more than sit in your account.</h2></div></div><div className="mt-14 grid gap-3 md:grid-cols-4">{steps.map(([t, n, c], i) => <Reveal key={t} delay={i * 80}><div className={`rounded-[18px] ${c} p-5 md:min-h-[210px] md:p-6`}><span className="label text-ink/55">0{i + 1}</span><p className="mt-10 text-[21px] font-semibold leading-tight tracking-[-.035em]">{t}</p><p className="mt-2 text-[30px] font-semibold tracking-[-.05em] tnum">{n}</p></div></Reveal>)}</div></div></section>
+  return <section className="bg-[#06132b] px-5 py-20 text-paper md:px-10 md:py-32"><div className="mx-auto max-w-[1280px]"><div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-6"><Eyebrow className="text-signal">A payment changes everything</Eyebrow><h2 className="mt-5 max-w-[650px] text-[clamp(2.5rem,5vw,4.8rem)] font-semibold leading-[.92] tracking-[-.065em]">One good payment can do more than sit in your account.</h2></div><p className="self-end text-[16px] leading-relaxed text-paper/65 lg:col-span-4 lg:col-start-9">Finlancer turns one payment into a plan, without requiring you to do the mental accounting.</p></div><div className="mt-14 grid gap-px overflow-hidden rounded-[22px] border border-white/15 bg-white/15 md:grid-cols-4">{steps.map(([t, n, c], i) => <Reveal key={t} delay={i * 80}><div className="group min-h-[230px] bg-[#0d2143] p-5 transition-colors hover:bg-[#14335f] md:p-6"><span className="label text-paper/45">0{i + 1}</span><div className={`mt-10 h-2 w-16 rounded-full ${c}`} /><p className="mt-6 text-[21px] font-semibold leading-tight tracking-[-.035em]">{t}</p><p className="mt-2 text-[30px] font-semibold tracking-[-.05em] tnum text-[#ffce31]">{n}</p><p className="mt-5 text-[11px] text-paper/50">Updated automatically</p></div></Reveal>)}</div></div></section>
 }
 
 function FinalCTA() {

@@ -27,7 +27,7 @@ function Header() {
   const [drawer, setDrawer] = useState(false)
   const [mobileProduct, setMobileProduct] = useState(false)
   const loc = useLocation()
-  const darkSurface = !['/', '/resources', '/about'].includes(loc.pathname)
+  const darkSurface = !['/resources', '/about'].includes(loc.pathname)
   const t = useRef<number>(0)
 
   useEffect(() => {
